@@ -1,0 +1,49 @@
+\section{Open Systems: Necessity Without Additivity}
+\label{sec:open_systems}
+Many persistent systems (cells, firms, ecosystems) are open, exchanging energy and information. But the necessity and sufficiency proofs of \cref{sec:architecture_of_persistence,sec:dynamics_of_persistence} were established strictly within Quiescent Steady State. We show necessity of the six pillars survives unchanged; only the Entropic Balance Sheet (\cref{subsec:entropic_balance_sheet}) requires re-derivation in flux-driven capacity.
+
+\subsection{Pointwise Necessity and Operational Latency}
+\label{subsec:necessity_flux_independent}
+Because the substrate continuously filters for causal coherence, survival is an instantaneous requirement, not a time-averaged one.
+
+\begin{proposition}[Pointwise Necessity]
+For any system persisting past instant $t$, all six pillars must be structurally instantiated at $t$, regardless of external flux $\mathrm{d}_eS(t)$.
+\end{proposition}
+
+\begin{proof}
+By the exponential filter (\cref{eq:survival_prob}), survival over a history $\Gamma$ is strictly multiplicative. If any pillar is functionally absent during an arbitrarily small interval $\mathrm{d}t$, the local survival probability drops to zero ($q_t \to 0$) via the failure modes of \cref{subsec:pillars_necessity}. The entire multiplicative history collapses. The requirement is therefore instantaneous and flux-independent.
+\end{proof}
+
+Flux alters a pillar's \emph{operation}, not its \emph{existence}. During phases of rapid growth or unbounded resource influx, a constraint mechanism might be operationally latent ($f_{\mathrm{GOV}} \approx 0$), incurring no active coordination cost. Yet its \emph{structural capacity} must exist at $t$; if the mechanism is fundamentally absent, the system fails to persist the moment it reaches environmental saturation.
+
+
+\subsection{The Dynamic Budget: A Stochastic Master Equation for Shared Resources}
+\label{subsec:dynamic_budget_stochastic}
+Strict additivity ($Z_{\mathrm{IE}} = \sum Z_i$) relies on Prigogine's near-equilibrium linear regime, where orthogonal domains prevent interference. In open systems, external flux raises the dissipation ceiling to a dynamic boundary $\mathcal{D}_{\max}(t)$; as operations scale against this moving ceiling, resource contention forces non-linear cross-coupling ($\Delta(t)$) between previously orthogonal pillars:
+\begin{equation}
+\label{eq:open_balance}
+    Z_{\mathrm{IE}}(t) = \sum_i Z_i(t) \;+\; \Delta(t)
+\end{equation}
+
+We model the finite substrate as a stochastic service channel. Baseline transitions trigger coordination demands (Protocol routing, Governor constraint checks) that the substrate must process. By the  Palm-Khintchine theorem, the superposition of many independent, sparse demands from distributed subsystem components converges to a Poisson arrival process, $\lambda \propto \mathcal{D}(t)$; the substrate serves these at capacity-limited rate $\mu \propto
+\mathcal{D}_{\max}(t)$, exponentially distributed as the maximum-entropy prior for a known mean.
+
+\textbf{The Shared-Stream Coupling:} Protocol and Governor demands, with independent Poisson rates $\lambda_{\mathrm{PRO}}$ and $\lambda_{\mathrm{GOV}}$, merge into a single FCFS M/M/1 stream $\lambda = \lambda_{\mathrm{PRO}} + \lambda_{\mathrm{GOV}}$, with utilizations $\rho_{\mathrm{PRO}} = \lambda_{\mathrm{PRO}}/\mu$, $\rho_{\mathrm{GOV}} = \lambda_{\mathrm{GOV}}/\mu$, and total $\rho = \rho_{\mathrm{PRO}} + \rho_{\mathrm{GOV}}$. This continuous-time Markov chain has exact stationary distribution $\pi_n = (1-\rho)\rho^n$ and mean sojourn time $W = 1/(\mu(1-\rho))$.
+
+Applying Little's Law ($L_i = \lambda_i W$) to each demand stream decomposes the shared cost per pillar:
+\begin{equation}
+    L_{\mathrm{GOV}} = \lambda_{\mathrm{GOV}} W = \frac{\rho_{\mathrm{GOV}}}{1 - (\rho_{\mathrm{PRO}} + \rho_{\mathrm{GOV}})}
+\end{equation}
+By Landauer's Principle, pending uncoordinated operations incur a continuous entropic cost $\xi_0$; the Governor's coordination cross-term is modeled as $\Delta_{\mathrm{GOV}}(t) = \xi_0 L_{\mathrm{GOV}}$.
+
+This proves the cross-coupling within the shared-queue model: heavy Protocol routing ($\rho_{\mathrm{PRO}} \to 1$) inflates the Governor's entropic cost ($\Delta_{\mathrm{GOV}} \propto 1/(1-\rho_{\mathrm{PRO}})$) even with static Governor demand. Within this model, the pillars cease to be orthogonal because they share a finite volumetric service capacity.
+
+\textbf{Macroscopic Limits and Generalizations:} This model relates IE to three phenomenological regimes, two directly, one by expected extension:
+\begin{enumerate}
+    \item \textbf{Onsager Recovery (Low $\rho$):} A van Kampen system-size expansion in the limit $\rho \ll 1$ is expected to recover linear force-flux relations ($\Delta \to 0$); QSS additivity is the leading-order behavior of the un-congested lattice.
+    \item \textbf{The Thrashing Asymptote (High $\rho$):} As $\mathcal{D} \to \mathcal{D}_{\max}$, the rational divergence dominates: the system expends disproportionate action managing contention, forcing structural pauses (apoptosis, circuit breakers) to drop $\rho$ and avoid causal collapse.
+    \item \textbf{Non-Markovian Variance (Kingman's Formula):} Relaxing the memoryless assumption yields a general renewal system (GI/G/1), for which Kingman's heavy-traffic approximation adds the coefficients of variation ($c_a^2, c_s^2$); our derived $\rho/(1-\rho)$ form is exactly its memoryless special case, explicitly isolating baseline geometric friction from domain-specific statistical variance.
+\end{enumerate}
+
+The foundational claim of IE that the six pillars are structurally mandatory is entirely unaffected by the specific arrival distributions governing $\Delta(t)$, or by whether this two-pillar model extends to the full six. Within that scope, the Entropic Balance Sheet takes the form $Z_{\mathrm{IE}} = \sum_i Z_i + \Delta(t)$, with the strict
+additivity of the Quiescent Steady State as the idealized limit where the substrate's stochastic friction ($\Delta(t) \to 0$) vanishes.

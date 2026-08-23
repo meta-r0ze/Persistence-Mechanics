@@ -1,0 +1,66 @@
+\section{Least Action as Survivorship}
+\label{sec:least_action}
+
+The Entropic Action defines \textit{what} a system must minimize; the Selection Principle establishes \textit{that} only minimal-action configurations remain observable. We now derive \textit{which} path a
+surviving system follows.
+
+Standard quantum mechanics grounds the Principle of Least Action in phase interference. IE suggests a complementary, classical mechanism (thermodynamic elimination) with the substrate itself acting as
+a filter: what remains observable is only what has not yet dissipated.
+
+\subsection{The Exponential Filter}
+\label{subsec:exponential_filter}
+
+If persistence is maintained by state transitions, and each transition risks scrambling information into the substrate noise floor, then a history of $N$ transitions survives only if every step survives. Independent errors compound multiplicatively, yielding an exponential filter.
+
+Consider a structural history $\Gamma$ composed of $N$ elementary state transitions. Each transition scrambles a finite fraction of the system's distinguishable state information into the substrate's noise floor. Let $q$ be the probability that a single transition maintains causal coherence rather than losing its informational trace to the background.
+
+In Quiescent Steady State, successive transitions are statistically independent dissipative events. The probability that the trajectory $\Gamma$ maintains coherence after $N$ transitions is therefore strictly multiplicative:
+
+\begin{equation}
+\label{eq:multiplicative_survival}
+    P(\text{survival} \mid \Gamma) = q^N
+\end{equation}
+
+The Entropic Action $S_\Phi[\Gamma]$ is the dimensionless count of elementary transitions accumulated over the history $\Gamma$. Rewriting $q^N$ in exponential form, $q^N = e^{N\ln q}$, then substituting $N = S_\Phi[\Gamma]$ and $\beta \equiv -\ln q > 0$ (so $\beta$ is positive, since $0<q<1$ makes $\ln q$ negative) gives $N\ln q = -\beta S_\Phi[\Gamma]$, turning \cref{eq:multiplicative_survival} into:
+
+\begin{equation}
+\label{eq:survival_prob}
+    P(\text{survival} \mid \Gamma) = e^{-\beta S_\Phi[\Gamma]}
+\end{equation}
+
+Here $\beta \equiv -\ln q$ is the substrate's inverse entropic tolerance, a geometric invariant of the channel. For discrete substrates, $q$ is determined by the channel geometry; in continuous media, $\beta$ emerges from the substrate's noise spectral density.
+
+The form itself is the informational analogue of the Boltzmann distribution $P \propto e^{-E/k_BT}$, with $S_\Phi$ playing the role of energy and $\beta$ the role of inverse temperature. The Boltzmann form is derived from ensemble statistics at equilibrium and this form is derived from the multiplicative compounding of independent transition risk along a single history, presupposing neither equilibrium, a thermal bath, nor a physical substrate. Both converge on the same exponential law; the informational route recovers it under strictly weaker assumptions.
+
+\subsection{The Severity of the Selection Principle}
+\label{subsec:severity}
+
+How harsh is the Selection Principle? Let $\Gamma_{\text{min}}$ be the minimal-action trajectory and $\Gamma_{\text{var}}$ any variant path with a deviation $\delta S_\Phi > 0$. Over any observation window, the relative survival probability is:
+
+\begin{equation}
+\label{eq:severity}
+    \frac{P(\Gamma_{\text{var}})}{P(\Gamma_{\text{min}})} = e^{-\beta \delta S_\Phi}
+\end{equation}
+
+When the fundamental update cycle is much shorter than the observation timescale, even a small per-transition deviation compounds into a vast accumulated $\delta S_\Phi$, and the survival ratio $P(\Gamma_{\text{var}})/P(\Gamma_{\text{min}})$ falls to zero. The gap between the best trajectory and the next-best widens without bound.
+
+\subsection{No Merit Required}
+\label{subsec:teleology}
+Severity is a statement about the losers, not the winner. It says nothing about whether $\Gamma_{\text{min}}$ is efficient, elegant, or well-suited to anything, only that every alternative to it decayed faster. A mediocre trajectory survives just as certainly as an excellent one, provided everything else was worse. What looks like design, foresight, or purpose is not a property of the winner; it is the absence of its competition.
+
+\subsection{The Principle of Least Action}
+\label{subsec:least_action}
+The severity of the Selection Principle is formalized as:
+
+\begin{proposition}[Least Action as Survivorship]
+In Quiescent Steady State, the observable trajectories of any persistent system are stationary paths of the Entropic Action:
+\begin{equation}
+    \delta S_\Phi = 0.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+By the Selection Principle and \cref{eq:severity}, only trajectories minimizing $S_\Phi$ remain observable. The observable ensemble is therefore concentrated on the stationary manifold $\delta S_\Phi = 0$.
+\end{proof}
+
+The standard formulation postulates this condition variationally, that nature simply does minimize action, but for reasons that are unexplained. Here we derive it as the accumulated record of all trajectories that failed to minimize their dissipation. The Principle of Least Action is the record of what is left, not the rule being followed.

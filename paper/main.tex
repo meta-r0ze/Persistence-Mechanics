@@ -1,0 +1,80 @@
+\documentclass[aps,prd,twocolumn,showpacs,superscriptaddress,groupedaddress,nofootinbib,english]{revtex4-2}  
+
+% Core Math & Symbols
+\usepackage{amsmath, amssymb, bm}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{slashed}
+
+\usepackage{amsthm}
+
+\newtheorem{proposition}{Proposition}
+
+% Tables & Formatting
+\usepackage{booktabs, tabularx, array}
+\usepackage{siunitx}
+\sisetup{
+    separate-uncertainty = true,  % Forces the ± symbol
+    multi-part-units = single,    % Wraps units: (1.2 ± 0.1) kg
+    sticky-per = true             % Helps with complex units
+}
+\sisetup{separate-uncertainty=true, multi-part-units=single}
+\usepackage{graphicx}
+\graphicspath{{calculations/}}
+
+\makeatletter
+\providecommand*{\input@path}{}
+\g@addto@macro\input@path{{calculations/}} % Add your folder here
+\makeatother
+ 
+\makeatletter
+\let\l@de\l@ngerman
+\makeatother
+\makeatletter
+\let\l@en\l@english
+\makeatother
+\usepackage[ngerman, main=english]{babel}
+
+\usepackage{cancel}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{catchfilebetweentags} 
+\usepackage{enumitem}
+
+% Features
+\usepackage[pdfencoding=auto]{hyperref}
+\usepackage[noabbrev]{cleveref} % Load last
+
+\begin{document}
+
+% Title Area
+\title{Informational Energetics: Universal Architecture and the Entropic Action of Persistence}
+
+\author{Kate Lenore Meyer}
+\affiliation{Independent Researcher}
+\email{kate.ie@meyerhome.net}
+
+\date{\today}
+
+\input{0_abstract}
+
+\maketitle % Generates the title block
+
+\input{1_introduction}
+
+% Main content
+\input{2_architecture_of_persistence}
+\input{3_dynamics_of_persistence}
+\input{4_least_action}
+\input{5_open_flux}
+\input{6_mapping}
+
+\input{7_conclusion}
+\input{8_acknowledgments}
+
+% Bibliography
+\bibliography{references}
+
+%\appendix
+
+\end{document}
