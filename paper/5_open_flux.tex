@@ -25,8 +25,10 @@ Strict additivity ($Z_{\mathrm{IE}} = \sum Z_i$) relies on Prigogine's near-equi
     Z_{\mathrm{IE}}(t) = \sum_i Z_i(t) \;+\; \Delta(t)
 \end{equation}
 
-We model the finite substrate as a stochastic service channel. Baseline transitions trigger coordination demands (Protocol routing, Governor constraint checks) that the substrate must process. By the  Palm-Khintchine theorem, the superposition of many independent, sparse demands from distributed subsystem components converges to a Poisson arrival process, $\lambda \propto \mathcal{D}(t)$; the substrate serves these at capacity-limited rate $\mu \propto
-\mathcal{D}_{\max}(t)$, exponentially distributed as the maximum-entropy prior for a known mean.
+We model contention between two of the six pillars, Protocol and Governor, as a stochastic service channel; the remaining four are not coupled in this treatment. Baseline transitions trigger the coordination demands each must process: Protocol routing, Governor constraint checks. By the Palm-Khintchine theorem, the superposition of many independent, sparse demands from distributed subsystem components converges to a Poisson arrival process, $\lambda \propto \mathcal{D}(t)$; the substrate serves these at capacity-limited rate $\mu \propto \mathcal{D}_{\max}(t)$, exponentially distributed as the maximum-entropy prior for a known mean.
+
+We define a shared First-Come, First-Served (FCFS) M/M/1 queue for these two streams; a minimal, analytically tractable model chosen to demonstrate cross-coupling in principle, not to capture the full statistics of real contention, and relaxed below via Kingman's heavy-traffic generalization to non-Markovian arrivals (GI/G/1).
+
 
 \textbf{The Shared-Stream Coupling:} Protocol and Governor demands, with independent Poisson rates $\lambda_{\mathrm{PRO}}$ and $\lambda_{\mathrm{GOV}}$, merge into a single FCFS M/M/1 stream $\lambda = \lambda_{\mathrm{PRO}} + \lambda_{\mathrm{GOV}}$, with utilizations $\rho_{\mathrm{PRO}} = \lambda_{\mathrm{PRO}}/\mu$, $\rho_{\mathrm{GOV}} = \lambda_{\mathrm{GOV}}/\mu$, and total $\rho = \rho_{\mathrm{PRO}} + \rho_{\mathrm{GOV}}$. This continuous-time Markov chain has exact stationary distribution $\pi_n = (1-\rho)\rho^n$ and mean sojourn time $W = 1/(\mu(1-\rho))$.
 
