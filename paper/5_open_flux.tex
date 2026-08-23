@@ -17,7 +17,7 @@ By the exponential filter (\cref{eq:survival_prob}), survival over a history $\G
 Flux alters a pillar's \emph{operation}, not its \emph{existence}. During phases of rapid growth or unbounded resource influx, a constraint mechanism might be operationally latent ($f_{\mathrm{GOV}} \approx 0$), incurring no active coordination cost. Yet its \emph{structural capacity} must exist at $t$; if the mechanism is fundamentally absent, the system fails to persist the moment it reaches environmental saturation.
 
 
-\subsection{The Dynamic Budget: A Stochastic Master Equation for Shared Resources}
+\subsection{The Dynamic Budget: Contention for Shared Resources}
 \label{subsec:dynamic_budget_stochastic}
 Strict additivity ($Z_{\mathrm{IE}} = \sum Z_i$) relies on Prigogine's near-equilibrium linear regime, where orthogonal domains prevent interference. In open systems, external flux raises the dissipation ceiling to a dynamic boundary $\mathcal{D}_{\max}(t)$; as operations scale against this moving ceiling, resource contention forces non-linear cross-coupling ($\Delta(t)$) between previously orthogonal pillars:
 \begin{equation}
@@ -36,7 +36,13 @@ Applying Little's Law ($L_i = \lambda_i W$) to each demand stream decomposes the
 \begin{equation}
     L_{\mathrm{GOV}} = \lambda_{\mathrm{GOV}} W = \frac{\rho_{\mathrm{GOV}}}{1 - (\rho_{\mathrm{PRO}} + \rho_{\mathrm{GOV}})}
 \end{equation}
-By Landauer's Principle, pending uncoordinated operations incur a continuous entropic cost $\xi_0$; the Governor's coordination cross-term is modeled as $\Delta_{\mathrm{GOV}}(t) = \xi_0 L_{\mathrm{GOV}}$.
+
+By Landauer's Principle, each pending, uncoordinated operation incurs a fixed entropic cost $\xi_0$ at the moment it is processed; the corresponding cost \emph{rate} is that cost times the rate at which pending operations clear the queue, $\mu$. The Governor's coordination cross-term is therefore
+\begin{equation}
+    \Delta_{\mathrm{GOV}}(t) = \xi_0 \, \mu \, L_{\mathrm{GOV}} =
+    \xi_0 \, \mu \left( \frac{\rho_{\mathrm{GOV}}}{1-\rho} \right),
+\end{equation}
+a rate, dimensionally consistent with $Z_{\mathrm{IE}}(t)$ in \cref{eq:open_balance}.
 
 This proves the cross-coupling within the shared-queue model: heavy Protocol routing ($\rho_{\mathrm{PRO}} \to 1$) inflates the Governor's entropic cost ($\Delta_{\mathrm{GOV}} \propto 1/(1-\rho_{\mathrm{PRO}})$) even with static Governor demand. Within this model, the pillars cease to be orthogonal because they share a finite volumetric service capacity.
 
