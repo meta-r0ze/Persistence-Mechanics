@@ -1,18 +1,13 @@
-\section{Least Action as Survivorship}
-\label{sec:least_action}
-
-The Entropic Action defines \textit{what} a system must minimize; the Selection Principle establishes \textit{that} only minimal-action configurations remain observable. We now derive \textit{which} path a
-surviving system follows.
-
-Standard quantum mechanics grounds the Principle of Least Action in phase interference. IE suggests a complementary, classical mechanism (thermodynamic elimination) with the substrate itself acting as
-a filter: what remains observable is only what has not yet dissipated.
+\section{Minimum Action as Survivorship}
+\label{sec:minimum_action}
+The Entropic Action defines \textit{what} a system must minimize; the Selection Principle establishes \textit{that} only minimal-action configurations remain observable. We now derive \textit{which} path a surviving system follows.
 
 \subsection{The Exponential Filter}
 \label{subsec:exponential_filter}
 
 If persistence is maintained by state transitions, and each transition risks scrambling information into the substrate noise floor, then a history of $N$ transitions survives only if every step survives. Independent errors compound multiplicatively, yielding an exponential filter.
 
-Consider a structural history $\Gamma$ composed of $N$ elementary state transitions. Because the substrate possesses a finite noise floor, every transition carries an intrinsic substrate-defined risk of information loss. Let $q$ be the probability that a single transition maintains causal coherence rather than losing its informational trace to the background.
+Consider a structural history $\Gamma$ composed of $N$ elementary state transitions. Because the substrate possesses a finite noise floor, every transition carries an intrinsic substrate-defined risk of information loss, set by how the transition's paid toll $\xi$ (\cref{subsec:dissipation_density}) compares to that floor. Let $q$ be the probability that a single transition maintains causal coherence rather than losing its informational trace to the background.
 
 In Quiescent Steady State, successive transitions are statistically independent dissipative events. The probability that the trajectory $\Gamma$ maintains coherence after $N$ transitions is therefore strictly multiplicative:
 
@@ -48,19 +43,16 @@ When the fundamental update cycle is much shorter than the observation timescale
 \label{subsec:teleology}
 Severity is a statement about the losers, not the winner. It says nothing about whether $\Gamma_{\text{min}}$ is efficient, elegant, or well-suited to anything, only that every alternative to it decayed faster. A mediocre trajectory survives just as certainly as an excellent one, provided everything else was worse. What looks like design, foresight, or purpose is not a property of the winner; it is the absence of its competition.
 
-\subsection{The Principle of Least Action}
-\label{subsec:least_action}
+\subsection{Minimum Action as Survivorship}
+\label{subsec:minimum_action_as_survivorship}
 The severity of the Selection Principle is formalized as:
 
-\begin{proposition}[Least Action as Survivorship]
-In Quiescent Steady State, the observable trajectories of any persistent system are stationary paths of the Entropic Action:
-\begin{equation}
-    \delta S_\Phi = 0.
-\end{equation}
+\begin{proposition}[Minimum Action as Survivorship]
+In Quiescent Steady State, the observable trajectories of any persistent system are those achieving the minimal Entropic Action $S_\Phi$ among all candidate trajectories.
 \end{proposition}
 
 \begin{proof}
-By the Selection Principle and \cref{eq:severity}, only trajectories minimizing $S_\Phi$ remain observable. The observable ensemble is therefore concentrated on the stationary manifold $\delta S_\Phi = 0$.
+By the Selection Principle and \cref{eq:severity}, only trajectories minimizing $S_\Phi$ remain observable; the observable set is therefore the argmin of $S_\Phi[\Gamma]$ over candidate histories $\Gamma$, possibly containing more than one history if the minimum is not unique.
 \end{proof}
 
-Standard classical mechanics takes the variational principle as foundational. Here, we demonstrate that this principle emerges naturally from a discrete informational substrate as the statistical boundary of survivorship. The record of what is left, not the rule being followed.
+Standard quantum mechanics grounds the Principle of Least Action in phase interference. IE offers a distinct, classical mechanism (informational elimination) by which nature could favor certain histories: the substrate itself acts as a filter, and what remains observable is only what has not yet dissipated.

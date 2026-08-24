@@ -18,40 +18,48 @@ Flux alters a pillar's \emph{operation}, not its \emph{existence}. During phases
 
 
 \subsection{The Dynamic Budget: Contention for Shared Resources}
-\label{subsec:dynamic_budget_stochastic}
-Strict additivity ($Z_{\mathrm{IE}} = \sum Z_i$) relies on Prigogine's near-equilibrium linear regime, where orthogonal domains prevent interference. In open systems, external flux raises the dissipation ceiling to a dynamic boundary $\mathcal{D}_{\max}(t)$; as operations scale against this moving ceiling, resource contention forces non-linear cross-coupling ($\Delta(t)$) between previously orthogonal pillars:
+\label{subsec:dynamic_budget}
+
+Strict additivity ($Z_{\mathrm{IE}} = \sum_i Z_i$) relies on the Quiescent Steady State, where orthogonal domains prevent interference. In open systems, external flux raises the dissipation ceiling to a dynamic boundary $\mathcal{D}_{\max}(t)$; as operations scale against this moving ceiling, resource contention forces non-linear cross-coupling ($\Delta(t)$) between previously orthogonal pillars:
 \begin{equation}
 \label{eq:open_balance}
-    Z_{\mathrm{IE}}(t) = \sum_i Z_i(t) \;+\; \Delta(t)
+    Z_{\mathrm{IE}}(t) = \sum_i Z_i(t) \;+\; \Delta(t).
 \end{equation}
 
-We model contention between two of the six pillars, Protocol and Governor, as a stochastic service channel; the remaining four are not coupled in this treatment. Baseline transitions trigger the coordination demands each must process: Protocol routing, Governor constraint checks. By the Palm-Khintchine theorem, the superposition of many independent, sparse demands from distributed subsystem components converges to a Poisson arrival process, $\lambda \propto \mathcal{D}(t)$; the substrate serves these at capacity-limited rate $\mu \propto \mathcal{D}_{\max}(t)$, exponentially distributed as the maximum-entropy prior for a known mean.
+We derive this cross-coupling from the discrete substrate properties already established: the Margolus-Levitin bound quantizes time into minimum cycles $\tau$, and Landauer's principle assigns a fixed toll $\xi_0$ to every unresolved distinguishable state.
 
-We define a shared First-Come, First-Served (FCFS) M/M/1 queue for these two streams; a minimal, analytically tractable model chosen to demonstrate cross-coupling in principle, not to capture the full statistics of real contention, and relaxed below via Kingman's heavy-traffic generalization to non-Markovian arrivals (GI/G/1).
+\textbf{Discrete coordination capacity.} Protocol and Governor are coordination functions executed by the same substrate that performs all state transitions. The Margolus-Levitin limit bounds the minimum time between distinguishable operations, yielding a substrate-level coordination rate $\nu_{\max}$: the maximum number of coordination events the substrate can resolve per unit time. This is a geometric invariant of the substrate. In QSS, Protocol demand $\nu_{\mathrm{PRO}}$ and Governor demand $\nu_{\mathrm{GOV}}$ satisfy $\nu_{\mathrm{PRO}} + \nu_{\mathrm{GOV}} \ll \nu_{\max}$, leaving cycles effectively empty and preserving orthogonality ($\Delta = 0$).
 
-
-\textbf{The Shared-Stream Coupling:} Protocol and Governor demands, with independent Poisson rates $\lambda_{\mathrm{PRO}}$ and $\lambda_{\mathrm{GOV}}$, merge into a single FCFS M/M/1 stream $\lambda = \lambda_{\mathrm{PRO}} + \lambda_{\mathrm{GOV}}$, with utilizations $\rho_{\mathrm{PRO}} = \lambda_{\mathrm{PRO}}/\mu$, $\rho_{\mathrm{GOV}} = \lambda_{\mathrm{GOV}}/\mu$, and total $\rho = \rho_{\mathrm{PRO}} + \rho_{\mathrm{GOV}}$. This continuous-time Markov chain has exact stationary distribution $\pi_n = (1-\rho)\rho^n$ and mean sojourn time $W = 1/(\mu(1-\rho))$.
-
-Applying Little's Law ($L_i = \lambda_i W$) to each demand stream decomposes the shared cost per pillar:
+\textbf{Spatial independence and the load definition.} In QSS, the six pillars operate on orthogonal domains: the subsystems generating Protocol and Governor demands share no microstate. This spatial independence licenses the additive definition of the dimensionless coordination load:
 \begin{equation}
-    L_{\mathrm{GOV}} = \lambda_{\mathrm{GOV}} W = \frac{\rho_{\mathrm{GOV}}}{1 - (\rho_{\mathrm{PRO}} + \rho_{\mathrm{GOV}})}
+    \rho(t) = \frac{\nu_{\mathrm{PRO}}(t) + \nu_{\mathrm{GOV}}(t)}{\nu_{\max}}.
 \end{equation}
 
-By Landauer's Principle, each pending, uncoordinated operation incurs a fixed entropic cost $\xi_0$ at the moment it is processed; the corresponding cost \emph{rate} is that cost times the rate at which pending operations clear the queue, $\mu$. The Governor's coordination cross-term is therefore
+\textbf{Temporal independence and the geometric waiting distribution.} The load definition above governs instantaneous rates, not waiting-time statistics. To derive the latter, we model the substrate's retry behavior as a mean-field, memoryless process: in each Margolus-Levitin cycle, the substrate presents pending events to its coordination capacity symmetrically, with no internal hierarchy that would privilege one pillar over another. The probability that a specific pending event is selected for service in a given cycle is therefore $1-\rho$, and the probability it is deferred is $\rho$. This memoryless retry assumption is a modeling hypothesis about temporal independence, not a further consequence of pillar orthogonality. Under it, the probability of waiting exactly $k$ cycles is
 \begin{equation}
-    \Delta_{\mathrm{GOV}}(t) = \xi_0 \, \mu \, L_{\mathrm{GOV}} =
-    \xi_0 \, \mu \left( \frac{\rho_{\mathrm{GOV}}}{1-\rho} \right),
+    P(k) = \rho^k (1-\rho),
+\end{equation}
+and the mean number of pending cycles per demand is
+\begin{equation}
+    \langle k \rangle = \sum_{k=0}^{\infty} k \, \rho^k (1-\rho) = \frac{\rho}{1-\rho}.
+\end{equation}
+
+\textbf{The coordination cross-term.} Each pending cycle represents an uncoordinated operation held in a distinguishable state against the substrate noise floor. By Landauer's principle, each such cycle incurs the fixed entropic toll $\xi_0$. The excess dissipation rate is the toll per cycle times the mean number of pending Governor events times the cycle rate $\nu_{\max}$.
+
+Decomposing the pending pool by demand stream, the Governor's share is proportional to its load fraction. The mean number of pending Governor events is $\langle N_{\mathrm{GOV}} \rangle = \rho_{\mathrm{GOV}} / (1-\rho)$, where $\rho_{\mathrm{GOV}} = \nu_{\mathrm{GOV}}/\nu_{\max}$. The Governor's coordination cross-term is therefore
+\begin{equation}
+    \Delta_{\mathrm{GOV}}(t) = \xi_0 \, \nu_{\max} \, \langle N_{\mathrm{GOV}} \rangle = \xi_0 \, \nu_{\max} \left( \frac{\rho_{\mathrm{GOV}}}{1-\rho} \right),
 \end{equation}
 a rate, dimensionally consistent with $Z_{\mathrm{IE}}(t)$ in \cref{eq:open_balance}.
 
-This proves the cross-coupling within the shared-queue model: heavy Protocol routing ($\rho_{\mathrm{PRO}} \to 1$) inflates the Governor's entropic cost ($\Delta_{\mathrm{GOV}} \propto 1/(1-\rho_{\mathrm{PRO}})$) even with static Governor demand. Within this model, the pillars cease to be orthogonal because they share a finite volumetric service capacity.
+This demonstrates cross-coupling from discrete substrate properties: heavy Protocol routing ($\rho_{\mathrm{PRO}} \to 1$) inflates the Governor's entropic cost ($\Delta_{\mathrm{GOV}} \propto 1/(1-\rho_{\mathrm{PRO}})$) even with static Governor demand. The pillars cease to be orthogonal because they share a finite volumetric coordination capacity.
 
-\textbf{Macroscopic Limits and Generalizations:} This model relates IE to three phenomenological regimes, two directly, one by expected extension:
+\textbf{Macroscopic limits and the scope of the derivation.} The geometric form relies on two substrate properties: discrete cycles (from the Margolus-Levitin bound) and symmetric, memoryless retry (a mean-field hypothesis). Within this scope, three regimes emerge:
+
 \begin{enumerate}
-    \item \textbf{Onsager Recovery (Low $\rho$):} A van Kampen system-size expansion in the limit $\rho \ll 1$ is expected to recover linear force-flux relations ($\Delta \to 0$); QSS additivity is the leading-order behavior of the un-congested lattice.
-    \item \textbf{The Thrashing Asymptote (High $\rho$):} As $\mathcal{D} \to \mathcal{D}_{\max}$, the rational divergence dominates: the system expends disproportionate action managing contention, forcing structural pauses (apoptosis, circuit breakers) to drop $\rho$ and avoid causal collapse.
-    \item \textbf{Non-Markovian Variance (Kingman's Formula):} Relaxing the memoryless assumption yields a general renewal system (GI/G/1), for which Kingman's heavy-traffic approximation adds the coefficients of variation ($c_a^2, c_s^2$); our derived $\rho/(1-\rho)$ form is exactly its memoryless special case, explicitly isolating baseline geometric friction from domain-specific statistical variance.
+    \item \textbf{Onsager Recovery (Low $\rho$):} Expanding $\Delta \propto \rho + \mathcal{O}(\rho^2)$, the leading-order term is linear in the load. QSS additivity is the zeroth-order behavior of the uncongested substrate.
+    \item \textbf{The Thrashing Asymptote (High $\rho$):} As $\mathcal{D} \to \mathcal{D}_{\max}$, the rational divergence dominates. The system expends disproportionate action managing contention, forcing structural pauses (apoptosis, circuit breakers) to shed load and avoid causal collapse.
+    \item \textbf{Correlated Demand Statistics:} The geometric derivation assumes demands are temporally independent at the cycle scale. Mild correlation modifies the prefactor while preserving the $\rho/(1-\rho)$ divergence structure for the same reason that Kingman's heavy-traffic formula retains the $(1-\rho)^{-1}$ pole when variance is finite. Strongly correlated, heavy-tailed, or long-range-dependent arrivals can alter the asymptotic form itself; this baseline covers the structurally independent, memoryless-retry case that defines the six-pillar architecture.
 \end{enumerate}
 
-The foundational claim of IE that the six pillars are structurally mandatory is entirely unaffected by the specific arrival distributions governing $\Delta(t)$, or by whether this two-pillar model extends to the full six. Within that scope, the Entropic Balance Sheet takes the form $Z_{\mathrm{IE}} = \sum_i Z_i + \Delta(t)$, with the strict
-additivity of the Quiescent Steady State as the idealized limit where the substrate's stochastic friction ($\Delta(t) \to 0$) vanishes.
+The foundational claim that the six pillars are structurally mandatory is unaffected by the specific demand statistics governing $\Delta(t)$. Within this scope, the Entropic Balance Sheet takes the form $Z_{\mathrm{IE}} = \sum_i Z_i + \Delta(t)$, with strict QSS additivity as the idealized limit where the substrate's stochastic friction ($\Delta(t) \to 0$) vanishes.

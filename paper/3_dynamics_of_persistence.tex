@@ -10,24 +10,25 @@ While a system's architecture provides the capability to persist, the operation 
 
 Following Prigogine\cite{prigogine_introduction_1961}, persistence therefore requires two behaviors: internal entropy production must be exported to the environment fast enough that the system's own entropy never rises, and that production rate itself settles to the smallest value consistent with holding steady state ($\delta\sigma = 0$), below this floor a system is not yet stable, and above it, every transition is spending more than persistence strictly requires.
 
-We rigorously quantify this at its limiting case, \textbf{Quiescent Steady State}: no net energy or information enters or leaves, $Z_{\mathrm{IE}}$ is constant, and the entropic balance sheet (\cref{subsec:entropic_balance_sheet}) is strictly additive. The dynamic evolution of open systems is left to future work.
+We quantify this at its limiting case, \textbf{Quiescent Steady State}: no net energy or information enters or leaves, $Z_{\mathrm{IE}}$ is constant, and the entropic balance sheet (\cref{subsec:entropic_balance_sheet}) is strictly additive. The dynamic evolution of open systems is left to future work.
 
 
 \subsection{The Dissipation Density}
 \label{subsec:dissipation_density}
 Prigogine's Minimum Entropy Production theorem establishes \textit{that} a persistent system must minimize its entropy production rate, but not \textit{what} defines that rate. We derive the minimum dynamical description by identifying the irreducible primitives that any state transition law must presuppose.
 
-When the static six-pillar architecture moves through time, any state transition (a local dissipative event) implicates three candidate functional dimensions: a subject to transition, an energetic toll to execute the transition, and a temporal frequency of execution. These are not assigned to individual pillars, but are properties of the transition itself.
+When the static six-pillar architecture moves through time, any state transition (a local dissipative event) can be described along three axes inherent to the concept of change itself: what changes (a structured payload), what permits the change to occur (an energetic toll), and how often change occurs (a temporal frequency). These are
+not assigned to individual pillars, but are properties of the transition itself.
 
 \begin{enumerate}
     \item \textbf{A structured payload (The Subject):} Because a persistent system maintains a specific configuration rather than a statistical ensemble, its local state is quantified by its structural complexity $\mathbf{K}$. This is the dimensionless Kolmogorov complexity (as an uncomputable lower bound, for which computable proxies exist in applied use\footnote{Uncomputability does not preclude operational use: the algorithmic-information-theory literature routinely substitutes computable proxies: Minimum Description Length, Lempel-Ziv complexity, normalized compression distance as finite-sample estimators of $\mathbf{K}$, a practice this paper's baseline derivation does not require but that applied instantiations of IE can draw on directly.}) of the local configuration relative to the substrate's reference encoding (up to the invariant additive constant of the substrate's instruction set). \textit{Convergent Evidence (Kolmogorov Complexity \cite{kolmogorov_three_1968}):} The algorithmic information content of a state is the irreducible payload carried by any transition.
 
-    \item \textbf{An irreducible toll (The Cost):} Every transition exacts a cost, measured as a dimensionless count of elementary logical operations $\xi$. \textit{Convergent Evidence (Landauer's Principle \cite{landauer_irreversibility_1961}):} Every irreversible logical operation carries a thermodynamic cost of at least $k_B T \ln 2$.
+    \item \textbf{An irreducible toll (The Cost):} Every transition exacts a cost per elementary logical operation, $\xi$, expressed as a dimensionless number in fundamental units. \textit{Convergent Evidence (Landauer's Principle \cite{landauer_irreversibility_1961}):} Every irreversible logical operation carries a thermodynamic cost of at least $k_B T \ln 2$.
 
     \item \textbf{A coordinated rate (The Frequency):} State updates must occur at a transition flux $f$, a rate density of state updates per unit substrate measure. \textit{Convergent Evidence (The Nyquist--Shannon Sampling Theorem \cite{shannon_communication_1949}):} A signal can only be reconstructed without loss if sampled at a rate exceeding its bandwidth; below that rate, information is irrecoverably lost to aliasing. $f$ is the substrate-level analogue of this minimum sampling rate, required to track the Map against noise.
 \end{enumerate}
 
-The pillars operate on orthogonal domains (\cref{subsec:entropic_balance_sheet}) in the Quiescent Steady State; $\mathbf{K}$, $\xi$, and $f$ inherit this independence, each drawing on a distinct domain: algorithmic description, informational toll, and temporal rate, respectively. Because a local dissipation metric must yield a uniform density of elementary transitions per unit substrate measure, its functional form is dimensionally constrained. With $\mathbf{K}$ as [logical operations / local state], $\xi$ as [dimensionless action units / logical operation], and $f$ as [local states updated / (substrate spatial measure $\cdot$ time)]. Their strictly linear product yields $D$ as [action units / (substrate spatial measure $\cdot$ time)].
+The pillars operate on orthogonal domains (\cref{subsec:entropic_balance_sheet}) in the Quiescent Steady State; $\mathbf{K}$, $\xi$, and $f$ inherit this independence, each drawing on a distinct domain: algorithmic description, informational toll, and temporal rate, respectively. Because a local dissipation metric must yield a uniform density of elementary transitions per unit substrate measure, its functional form is dimensionally constrained. With $\mathbf{K}$ as [logical operations / local state], $\xi$ as [action units / logical operation], and $f$ as [local states updated / (substrate spatial measure $\cdot$ time)], their strictly linear product yields $\mathcal{D}$ as [action units / (substrate spatial measure $\cdot$ time)].
 
 The local \textbf{Dissipation Density} is therefore:
 
@@ -54,7 +55,7 @@ Since the removal of any factor results in termination, the set $(\xi, \mathbf{K
 
 \subsection{Necessity of the Product Form}
 \label{subsec:product_form_necessity}
-The product form of \cref{eq:dissipation_density} is the only functional form consistent with the counterfactual failure modes. An additive form would permit non-zero dissipation from any one factor alone (transition cost with no distinguishable states ($\mathbf{K}=0$), or structure with no transitions ($f=0$)) configurations already shown to have lifetime zero. Only the product form vanishes correctly when any factor is absent, matching the requirement that dissipation cannot occur without all three simultaneously.
+The product form, the geometric mean and other symmetric functions all vanishes when any factor reaches zero. What the product form uniquely satisfies is extensivity: doubling any one factor while holding the other two fixed must double the local dissipation, since twice the transition rate at identical cost and complexity is twice the dissipation, not a fractional multiple. Among functions vanishing correctly on any factor's absence, only the linear product $\mathcal{D} = \xi \cdot \mathbf{K} \cdot f$ is extensive in each factor independently; fractional-power forms such as $(\xi \cdot \mathbf{K} \cdot f)^{1/3}$ satisfy vanishing but not extensivity, and are excluded on that ground.
 
 \subsection{Sufficiency: No Fourth Factor}
 \label{subsec:action_sufficiency}
@@ -111,12 +112,12 @@ Minimization of $S_\Phi$ is only possible for systems implementing the complete 
 Minimizing $S_\Phi$ requires $\mathcal{D}$ strictly positive and finite, hence $\xi, \mathbf{K}, f > 0$ (\cref{eq:dissipation_density}). By the pillar-to-factor dependencies established in \cref{subsec:dissipation_density}, this requires all six pillars simultaneously: Toll and Capacity sustain $\xi > 0$; Map sustains $\mathbf{K} > 0$; Protocol, Governor, and Margin jointly sustain $f > 0$. Removing any one pillar collapses the corresponding factor to zero (reproducing the failure modes of \cref{subsec:action_necessity}) so any trajectory with $\delta S_\Phi = 0$ that maintains structural coherence necessarily encodes the complete architecture.
 \end{proof}
 
-The Entropic Action is therefore not defined independently of the architecture; the two are one closed claim. We now state the filter that determines how this minimization manifests in observation.
+The Entropic Action is therefore not defined independently of the architecture; the two are one closed claim.
 
 \subsection{The Selection Principle}
 \label{subsec:selection_principle}
 
-The Entropic Action defines \textit{what} a system must minimize; we now state the filter that determines \textit{how} minimization manifests in observation, reserving \textit{which path} a surviving system follows for \cref{sec:least_action}. Configurations do not \emph{seek} minimization; the principle is eliminative. What fails to minimize leaves no detectable signal, and what persists is the minimal-action remainder:
+The Entropic Action defines \textit{what} a system must minimize; we now state the filter that determines \textit{how} minimization manifests in observation, reserving \textit{which path} a surviving system follows for \cref{sec:minimum_action}. Configurations do not \emph{seek} minimization; the principle is eliminative. What fails to minimize leaves no detectable signal, and what persists is the minimal-action remainder:
 
 \begin{samepage}
 \begin{mdframed}[linewidth=1pt,linecolor=black,backgroundcolor=gray!10]

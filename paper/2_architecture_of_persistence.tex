@@ -45,7 +45,7 @@ Each pillar is independently attested by a convergent theorem from a distinct di
     
     \item \textbf{Governor ($GOV$):} \textit{The Constraint.}
     The non-linear constraint mechanism that prevents unbounded divergence or `runaway' loops. It enforces operational boundaries (e.g., apoptosis, budget limits) to protect the substrate from exhaustion. 
-    \textit{Convergent Evidence (Ashby's Law of Requisite Variety \cite{raadt_ashbys_1987}):} Ashby's Law of Requisite Variety requires that the constraint mechanism match the variety of perturbations; without Governor, runaway is unavoidable.
+    \textit{Convergent Evidence (Ashby's Law of Requisite Variety \cite{ashby_introduction_1956}):} Ashby's Law of Requisite Variety requires that the constraint mechanism match the variety of perturbations; without Governor, runaway is unavoidable.
     
     \item \textbf{Toll ($TOL$):} \textit{The Temporal Cost.} State transitions carry an irreducible information and temporal cost. Any irreversible logical operation, such as erasing a bit of structural information, necessitates a strictly compensatory increase in environmental Shannon entropy (the $k_BT \ln 2$ bound).
     \textit{Convergent Evidence (Landauer's Principle and Margolus-Levitin Limit \cite{landauer_irreversibility_1961,margolus_maximum_1998}):} These bounds make Toll a structural requirement.
@@ -54,14 +54,14 @@ Each pillar is independently attested by a convergent theorem from a distinct di
     The structural and energetic reserves held to absorb stochastic shocks. It defines the system's `Safe Operating Area,' providing the buffer required to survive environmental variance without terminal failure. (The gain and phase margin). 
     \textit{Convergent Evidence (Nyquist-Bode Stability Margins\cite{nyquist_regeneration_1932} and Kingman's Formula\cite{kingman_single_1961}):} A system operating at theoretical criticality has zero tolerance for variance. Kingman's formula shows that as a queueing system's utilization approaches unity, waiting time diverges asymptotically, zero buffer against arrival variance means unbounded delay. Nyquist's stability margins are the linear-control manifestation of the same general requirement: persistent systems must maintain structural tolerance away from critical thresholds.
 \end{enumerate}
-Every system operates upon a \textbf{Substrate}: the medium imposing immutable limits (bandwidth, latency, noise floor) within which the six pillars function. IE concerns closed-loop systems that maintain coherence against entropic pressure. This is not agency in any teleological sense; it is a \textbf{structural filter}. Only configurations implementing the six-pillar architecture survive observation; all others dissipate.
+Every system operates upon a \textbf{Substrate}: the medium imposing immutable limits (bandwidth, latency, noise floor) within which the six pillars function. IE concerns closed-loop systems that maintain coherence against entropic pressure. This is a structural filter, not teleological agency. Only configurations implementing the six-pillar architecture survive observation; all others dissipate.
 
 IE describes the architecture of persistence but does not explain the transition from disorder to structure.
 
 \subsection{The Entropic Balance Sheet}
 \label{subsec:entropic_balance_sheet}
 
-A persistent system operates as a dissipative resistor against entropic erosion. Its total entropic impedance $Z_{\mathrm{IE}}$ is the sum of all structural costs required to maintain the six-pillar architecture. Every pillar imposes a strictly positive cost: a system cannot maintain boundaries, store internal models, or execute state updates for free. Within this strictly positive budget, the pillars partition conceptually into two distinct operational roles:
+A persistent system operates as a dissipative resistor against entropic erosion. Just as circuit impedances in series sum to a total opposition to current flow, the six pillars' structural costs sum to a total entropic impedance, the total opposition the architecture presents to entropic erosion: $Z_{\mathrm{IE}} = \sum_i Z_i$.  Every pillar imposes a strictly positive cost: a system cannot maintain boundaries, store internal models, or execute state updates for free. Within this strictly positive budget, the pillars partition conceptually into two distinct operational roles:
 
 \begin{itemize}
     \item \textbf{Direct Structural Costs:} The irreducible physical overhead of maintaining the system's baseline existence. Maintaining the vessel ($Z_{\mathrm{CAP}}$, $Z_{\mathrm{MAR}}$), the internal model ($Z_{\mathrm{MAP}}$), and executing state updates ($Z_{\mathrm{TOL}}$) requires a strict allocation of resources regardless of how the system is organized.
@@ -92,17 +92,16 @@ The necessity of the set $\mathbb{P}$ $=$ $\{\mathrm{CAP},$ $\mathrm{MAP},$ $\ma
     \item \textbf{No Margin (Fragility):} Operating at theoretical criticality leaves zero buffer for environmental variance. $\tau \to 0$ by random shock.
 \end{itemize}
 
-Since the removal of any component results in termination, every element of $\mathbb{P}$ is necessary.
+Since the removal of any component results in $\tau \to 0$, every pillar is necessary.
 
 
 \subsection{Sufficiency: System Preservation}
 \label{subsec:pillars_sufficiency}
 % Prove that at the zero-flux baseline, the six pillars exhaust the architecture; no additional primitive is admissible.
-A seventh requirement could only arise from an external source or from internal composition. At zero flux, by definition, no external source exists. Composition is closed by the same taxonomy that generated $\mathbb{P}$: \Cref{subsec:existential_problems} established that every persistence-relevant demand is one of three existential problems engaged through one of two modes, provision or defense. A composite capability cannot introduce a third mode or a fourth problem; it can only combine pillars already drawn from the six pillars. With both routes closed, the six pillars exhaust the minimal architecture at the zero flux baseline.
+A seventh requirement could only arise from an external source or from internal composition. At zero flux, by definition, no external source exists. Composition is closed under the same taxonomy established in \cref{subsec:existential_problems}: any composite capability combines existing pillars, but cannot introduce a fourth existential problem or a third mode of engagement, since extent, content, and sequence (and provision and defense against each) were shown there to exhaust what it means for something to persist. No independent claim of ``proof'' is made beyond that taxonomy's own exhaustiveness.
 
 % Show example capabilities that are strict compositions of the six pillars, carrying no independent entropic budget.
-Capabilities traditionally treated as independent requirements bear this out. Memory is Map content provisioned against temporal variance by Margin. Prediction is Map operation on incoming signal via
-Protocol. Repair is Governor-triggered re-provisioning within the Margin reserve. Replication is Protocol-mediated write of Map onto fresh Capacity. Advanced topologies, such as feedforward networks and state observers, extend the six-pillar structure the same way: none introduces a new primitive, each is a composition within the existing six.
+Capabilities traditionally treated as independent requirements bear this out. Memory is Map content provisioned against temporal variance by Margin. Prediction is Map operation on incoming signal via Protocol. Repair is Governor-triggered re-provisioning within the Margin reserve. Replication is Protocol-mediated write of Map onto fresh Capacity. Advanced topologies, such as feedforward networks and state observers, extend the six-pillar structure the same way: none introduces a new primitive, each is a composition within the existing six.
 
 This exhaustion extends to open systems, not merely the zero flux baseline. External energy or information flux raises the effective dissipation ceiling and modifies the balance sheet, but it does not eliminate the need for any pillar, nor open a route to a seventh: flux changes the budget, not the architecture that budget maintains. The zero flux baseline is the vacuum limit of persistence, the architecture stripped of environmental complication, not a special case exempt from the open-system result.
 
@@ -113,7 +112,7 @@ This exhaustion extends to open systems, not merely the zero flux baseline. Exte
 The six pillars are not novel inventions; previous frameworks encountered pieces of the six-pillar architecture already. In each case the components were assumed to exist and not recognized as instances of one invariant beyond the framework's own domain. IE supplies what each was missing: a proof of why exactly these components are required, and the recognition that domains studying them in isolation have been studying the same architecture all along.
 
 \subsubsection{Relation to Information Theory}
-Channel optimization repeatedly encounters parameters corresponding to the six pillars: channel capacity (Capacity), codebook topology (Map), handshaking and framing (Protocol), power constraints (Governor), processing overhead (Toll), and link margins (Margin). Classical information theory treats these six as arbitrary external boundary conditions and optimizes throughput conditioned on them, without asking why a physical system must instantiate all six simply to persist against entropic erasure. IE exposes these engineering constraints as the irreducible, necessary architecture required for the channel hardware itself to exist, not tunables to optimize.
+Channel optimization repeatedly encounters parameters corresponding to the six pillars: channel capacity (Capacity), codebook topology (Map), handshaking and framing (Protocol), power constraints (Governor), processing overhead (Toll), and link margins (Margin). Classical information theory treats these six as externally specified boundary conditions and optimizes throughput conditioned on them, without asking why a physical system must instantiate all six simply to persist against entropic erasure. IE exposes these engineering constraints as the irreducible, necessary architecture required for the channel hardware itself to exist, not tunables to optimize.
 
 % Describe how thermodynamics and IE are different
 \subsubsection{Relation to Thermodynamics}
