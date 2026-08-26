@@ -10,7 +10,7 @@ While a system's architecture provides the capability to persist, the operation 
 
 Following Prigogine\cite{prigogine_introduction_1961}, persistence therefore requires two behaviors: internal entropy production must be exported to the environment fast enough that the system's own entropy never rises, and that production rate itself settles to the smallest value consistent with holding steady state ($\delta\sigma = 0$), below this floor a system is not yet stable, and above it, every transition is spending more than persistence strictly requires.
 
-We quantify this at its limiting case, \textbf{Quiescent Steady State}: no net energy or information enters or leaves, $Z_{\mathrm{IE}}$ is constant, and the entropic balance sheet (\cref{subsec:entropic_balance_sheet}) is strictly additive. The dynamic evolution of open systems is left to future work.
+We quantify this at its limiting case, \textbf{QSS}, $Z_{\mathrm{net}}$ is constant, and the entropic balance sheet (\cref{subsec:entropic_balance_sheet}) is strictly additive. The dynamic evolution of open systems is left to future work.
 
 
 \subsection{The Dissipation Density}
@@ -21,14 +21,17 @@ When the static six-pillar architecture moves through time, any state transition
 not assigned to individual pillars, but are properties of the transition itself.
 
 \begin{enumerate}
-    \item \textbf{A structured payload (The Subject):} Because a persistent system maintains a specific configuration rather than a statistical ensemble, its local state is quantified by its structural complexity $\mathbf{K}$. This is the dimensionless Kolmogorov complexity (as an uncomputable lower bound, for which computable proxies exist in applied use\footnote{Uncomputability does not preclude operational use: the algorithmic-information-theory literature routinely substitutes computable proxies: Minimum Description Length, Lempel-Ziv complexity, normalized compression distance as finite-sample estimators of $\mathbf{K}$, a practice this paper's baseline derivation does not require but that applied instantiations of IE can draw on directly.}) of the local configuration relative to the substrate's reference encoding (up to the invariant additive constant of the substrate's instruction set). \textit{Convergent Evidence (Kolmogorov Complexity \cite{kolmogorov_three_1968}):} The algorithmic information content of a state is the irreducible payload carried by any transition.
+    \item \textbf{A structured payload (The Subject):} A persistent system maintains a specific configuration rather than a statistical ensemble. Its local state is quantified by the structural complexity $\mathbf{K}$: the Kolmogorov complexity of the local configuration relative to the substrate's reference encoding, expressed in substrate-natural units of elementary logical operations per local state (up to the invariant additive constant of the substrate's instruction set).\footnote{Uncomputability does not preclude operational use: the algorithmic-information-theory literature routinely substitutes computable proxies: Minimum Description Length, Lempel-Ziv complexity, normalized compression distance, as finite-sample estimators of $\mathbf{K}$, a practice this paper's baseline derivation does not require but that applied instantiations can draw on directly.} \textit{Convergent Evidence (Kolmogorov Complexity \cite{kolmogorov_three_1968}):} The algorithmic information content of a state is the irreducible payload carried by any transition.
 
     \item \textbf{An irreducible toll (The Cost):} Every transition exacts a cost per elementary logical operation, $\xi$, expressed as a dimensionless number in fundamental units. \textit{Convergent Evidence (Landauer's Principle \cite{landauer_irreversibility_1961}):} Every irreversible logical operation carries a thermodynamic cost of at least $k_B T \ln 2$.
 
     \item \textbf{A coordinated rate (The Frequency):} State updates must occur at a transition flux $f$, a rate density of state updates per unit substrate measure. \textit{Convergent Evidence (The Nyquist--Shannon Sampling Theorem \cite{shannon_communication_1949}):} A signal can only be reconstructed without loss if sampled at a rate exceeding its bandwidth; below that rate, information is irrecoverably lost to aliasing. $f$ is the substrate-level analogue of this minimum sampling rate, required to track the Map against noise.
 \end{enumerate}
 
-The pillars operate on orthogonal domains (\cref{subsec:entropic_balance_sheet}) in the Quiescent Steady State; $\mathbf{K}$, $\xi$, and $f$ inherit this independence, each drawing on a distinct domain: algorithmic description, informational toll, and temporal rate, respectively. Because a local dissipation metric must yield a uniform density of elementary transitions per unit substrate measure, its functional form is dimensionally constrained. With $\mathbf{K}$ as [logical operations / local state], $\xi$ as [action units / logical operation], and $f$ as [local states updated / (substrate spatial measure $\cdot$ time)], their strictly linear product yields $\mathcal{D}$ as [action units / (substrate spatial measure $\cdot$ time)].
+The pillars operate on orthogonal domains (\cref{subsec:entropic_balance_sheet}) in the QSS; $\mathbf{K}$, $\xi$, and $f$ inherit this independence, each drawing on a distinct domain: algorithmic description, informational toll, and temporal rate, respectively. 
+
+Because a local dissipation metric must yield a uniform density of elementary transitions per unit substrate measure, its functional form is dimensionally constrained, these brackets track substrate counting units (operations, states, actions), not physical mass-length-time dimensions, the same sense in which a bit count or a
+radian is dimensionless yet still carried explicitly through a derivation. With $\mathbf{K}$ in [operations / local state], $\xi$ in [action / operation], and $f$ in [states / (substrate measure $\cdot$ time)], their strictly linear product yields $\mathcal{D}$ in [action / (substrate measure $\cdot$ time)].
 
 The local \textbf{Dissipation Density} is therefore:
 
@@ -66,7 +69,7 @@ Given the multiplicative form, a missing factor would drive $\mathcal{D}$ to zer
 The product form of the Dissipation Density implies a finite-budget competition among the three factors.
 
 \begin{proposition}[The Complexity Trade-off]
-For any system in Quiescent Steady State, the substrate's finite Capacity imposes a dissipation ceiling $\mathcal{D}_{\text{max}}$:
+For any system in QSS, the substrate's finite Capacity imposes a dissipation ceiling $\mathcal{D}_{\text{max}}$:
 \begin{equation}
     \xi \cdot \mathbf{K} \cdot f \le \mathcal{D}_{\text{max}}
 \end{equation}
@@ -86,23 +89,23 @@ A biological cell illustrates the binding constraint: ATP cost per operation ($\
 \label{subsec:entropic_action}
 Having established the conditions for structural survival, we need a way to compare surviving systems by lifetime. A system's viability cannot be judged pointwise: no single pillar sustains a transition alone, so no single local event determines survival either, what accumulates across the whole system is what matters. We build that accumulated quantity in two steps: first collapsing the system's spatial extent into one number at each instant, then accumulating that number over its lifetime.
 
-$\mathcal{D}$'s multiplicative, local form and $Z_{\mathrm{IE}}$'s additive, global one (\cref{subsec:entropic_balance_sheet}) are reconciled by integrating over the system's spatial footprint $\Sigma(t)$: many local multiplicative events, summed, become one global additive quantity at each instant:
+$\mathcal{D}$'s multiplicative, local form and $Z_{\mathrm{net}}$'s additive, global one (\cref{subsec:entropic_balance_sheet}) are reconciled by integrating over the system's spatial footprint $\Sigma(t)$: many local multiplicative events, summed, become one global additive quantity at each instant:
 
 \begin{equation}
 \label{eq:impedance_density}
-    Z_{\mathrm{IE}}(t) = \int_{\Sigma(t)} \mathcal{D} \, d\mu
+    Z_{\mathrm{net}}(t) = \int_{\Sigma(t)} \mathcal{D} \, d\mu
 \end{equation}
 \noindent with $\mathrm{d}\mu$ the counting measure on the discrete substrate state space, a sum over discrete points, not a continuous integral.
 
-With the impedance $Z_{\mathrm{IE}}(t)$ known to be the system's total instantaneous dissipation, the cumulative \textbf{Entropic Action} is the time integral of that impedance over the system's lifetime:
+With the impedance $Z_{\mathrm{net}}(t)$ known to be the system's total instantaneous dissipation, the cumulative \textbf{Entropic Action} is the time integral of that impedance over the system's lifetime:
 
 \begin{equation}
 \label{eq:entropic_action}
-    S_\Phi = \int_0^{\tau} Z_{\mathrm{IE}}(t) \, dt
+    S_\Phi = \int_0^{\tau} Z_{\mathrm{net}}(t) \, dt
 \end{equation}
 
 \subsubsection{Physical Meaning of the Entropic Action}
-Because $\mathcal{D}$ counts elementary state transitions per unit substrate measure, $S_\Phi$ is a pure, dimensionless count of irreversible transitions, not yet an energy. When IE is projected onto a thermal physical substrate, Landauer's principle supplies the thermodynamic scale $\xi_0 = k_B T \ln 2$, yielding the physical dissipation analogue $E_{\mathrm{diss}} = \xi_0 S_\Phi$. On athermal substrates, $S_\Phi$ remains well-defined; only the conversion factor to macroscopic energy changes.
+Because $\mathcal{D}$ counts elementary state transitions per unit substrate measure, $S_\Phi$ is a pure, dimensionless count of irreversible transitions, not yet an energy. When the dimensionless action $S_\Phi$ is projected onto a thermal physical substrate, Landauer's principle supplies the thermodynamic scale $\xi_0 = k_B T \ln 2$, yielding the physical dissipation analogue $E_{\mathrm{diss}} = \xi_0 S_\Phi$. On athermal substrates, $S_\Phi$ remains well-defined; only the conversion factor to macroscopic energy changes.
 
 \subsubsection{Necessity of the Architecture for the Action}
 \label{subsec:action_requires_architecture}

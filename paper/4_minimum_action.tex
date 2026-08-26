@@ -4,19 +4,20 @@ The Entropic Action defines \textit{what} a system must minimize; the Selection 
 
 \subsection{The Exponential Filter}
 \label{subsec:exponential_filter}
-
 If persistence is maintained by state transitions, and each transition risks scrambling information into the substrate noise floor, then a history of $N$ transitions survives only if every step survives. Independent errors compound multiplicatively, yielding an exponential filter.
 
-Consider a structural history $\Gamma$ composed of $N$ elementary state transitions. Because the substrate possesses a finite noise floor, every transition carries an intrinsic substrate-defined risk of information loss, set by how the transition's paid toll $\xi$ (\cref{subsec:dissipation_density}) compares to that floor. Let $q$ be the probability that a single transition maintains causal coherence rather than losing its informational trace to the background.
+Consider a structural history $\Gamma$ accumulating entropic action $S_\Phi[\Gamma]$ (\cref{eq:entropic_action}). Because the substrate possesses a finite noise floor, each unit of entropic action carries
+an intrinsic risk of information loss. Let $q$ be the probability that a single unit maintains causal coherence.
 
-In Quiescent Steady State, successive transitions are statistically independent dissipative events. The probability that the trajectory $\Gamma$ maintains coherence after $N$ transitions is therefore strictly multiplicative:
+In QSS, successive units are statistically independent dissipative events. The probability that $\Gamma$ maintains coherence is therefore multiplicative:
 
 \begin{equation}
-\label{eq:multiplicative_survival}
-    P(\text{survival} \mid \Gamma) = q^N
+\label{eq:survival_prob1}
+    P(\text{survival} \mid \Gamma) 
+    = q^{S_\Phi[\Gamma]} 
 \end{equation}
 
-The Entropic Action $S_\Phi[\Gamma]$ is the dimensionless count of elementary transitions accumulated over the history $\Gamma$. Rewriting $q^N$ in exponential form, $q^N = e^{N\ln q}$, then substituting $N = S_\Phi[\Gamma]$ and $\beta \equiv -\ln q > 0$ (so $\beta$ is positive, since $0<q<1$ makes $\ln q$ negative) gives $N\ln q = -\beta S_\Phi[\Gamma]$, turning \cref{eq:multiplicative_survival} into:
+Using the identity $q^C = e^{C\ln q}$ with $C = S_\Phi[\Gamma]$, and defining $\beta \equiv -\ln q > 0$ (positive since $0 < q < 1$), we have $S_\Phi[\Gamma]\ln q = -\beta S_\Phi[\Gamma]$, turning \cref{eq:survival_prob1} into:
 
 \begin{equation}
 \label{eq:survival_prob}
@@ -25,7 +26,7 @@ The Entropic Action $S_\Phi[\Gamma]$ is the dimensionless count of elementary tr
 
 Here $\beta \equiv -\ln q$ is the substrate's inverse entropic tolerance, a geometric invariant of the channel. For discrete substrates, $q$ is determined by the channel geometry; in continuous media, $\beta$ emerges from the substrate's noise spectral density.
 
-The form itself is the informational analogue of the Boltzmann distribution $P \propto e^{-E/k_BT}$, with $S_\Phi$ playing the role of energy and $\beta$ the role of inverse temperature. The Boltzmann form is derived from ensemble statistics at equilibrium and this form is derived from the multiplicative compounding of independent transition risk along a single history, presupposing neither equilibrium, a thermal bath, nor a physical substrate. Both converge on the same exponential law; the informational route recovers it under strictly weaker assumptions.
+The form itself is the informational analogue of the Boltzmann distribution $P \propto e^{-E/k_BT}$, with $S_\Phi$ playing the role of energy and $\beta$ the role of inverse temperature. The Boltzmann form is derived from ensemble statistics at equilibrium and this form is derived from the multiplicative compounding of independent transition risk along a single history, presupposing neither equilibrium, a thermal bath, nor a physical substrate. Both converge on the same exponential law; the informational route recovers it under strictly weaker assumptions: the substrate's own noise geometry does the work that equilibrium, a thermal bath, and a variational functional do for the classical derivation.
 
 \subsection{The Severity of the Selection Principle}
 \label{subsec:severity}
@@ -48,11 +49,11 @@ Severity is a statement about the losers, not the winner. It says nothing about 
 The severity of the Selection Principle is formalized as:
 
 \begin{proposition}[Minimum Action as Survivorship]
-In Quiescent Steady State, the observable trajectories of any persistent system are those achieving the minimal Entropic Action $S_\Phi$ among all candidate trajectories.
+In QSS, the observable trajectories of any persistent system are those achieving the minimal Entropic Action $S_\Phi$ among all candidate trajectories.
 \end{proposition}
 
 \begin{proof}
 By the Selection Principle and \cref{eq:severity}, only trajectories minimizing $S_\Phi$ remain observable; the observable set is therefore the argmin of $S_\Phi[\Gamma]$ over candidate histories $\Gamma$, possibly containing more than one history if the minimum is not unique.
 \end{proof}
 
-Standard quantum mechanics grounds the Principle of Least Action in phase interference. IE offers a distinct, classical mechanism (informational elimination) by which nature could favor certain histories: the substrate itself acts as a filter, and what remains observable is only what has not yet dissipated.
+Standard quantum mechanics grounds the Principle of Least Action in phase interference. The Selection Principle offers a distinct, classical mechanism (informational elimination) by which nature could favor certain histories: the substrate itself acts as a filter, and what remains observable is only what has not yet dissipated.

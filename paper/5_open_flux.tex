@@ -1,65 +1,41 @@
 \section{Open Systems: Necessity Without Additivity}
 \label{sec:open_systems}
-Many persistent systems (cells, firms, ecosystems) are open, exchanging energy and information. But the necessity and sufficiency proofs of \cref{sec:architecture_of_persistence,sec:dynamics_of_persistence} were established strictly within Quiescent Steady State. We show necessity of the six pillars survives unchanged; only the Entropic Balance Sheet (\cref{subsec:entropic_balance_sheet}) requires re-derivation in flux-driven capacity.
+Many persistent systems (cells, firms, ecosystems) are open, exchanging energy and information. But the necessity and sufficiency proofs of \cref{sec:architecture_of_persistence,sec:dynamics_of_persistence} were established strictly within QSS. We show necessity of the six pillars survives unchanged; only the Entropic Balance Sheet (\cref{subsec:entropic_balance_sheet}) requires re-derivation in flux-driven capacity.
 
 \subsection{Pointwise Necessity and Operational Latency}
 \label{subsec:necessity_flux_independent}
 Because the substrate continuously filters for causal coherence, survival is an instantaneous requirement, not a time-averaged one.
 
 \begin{proposition}[Pointwise Necessity]
+\label{prop:pointwise_necessity}
 For any system persisting past instant $t$, all six pillars must be structurally instantiated at $t$, regardless of external flux $\mathrm{d}_eS(t)$.
 \end{proposition}
 
 \begin{proof}
-By the exponential filter (\cref{eq:survival_prob}), survival over a history $\Gamma$ is strictly multiplicative. If any pillar is functionally absent during an arbitrarily small interval $\mathrm{d}t$, the local survival probability drops to zero ($q_t \to 0$) via the failure modes of \cref{subsec:pillars_necessity}. The entire multiplicative history collapses. The requirement is therefore instantaneous and flux-independent.
+By the exponential filter (\cref{eq:survival_prob}), survival over a history $\Gamma$ is multiplicative. If any pillar is functionally absent during an arbitrarily small interval $\mathrm{d}t$, the local survival probability drops to zero ($q_t \to 0$) via the failure modes of \cref{subsec:pillars_necessity}. The entire multiplicative history collapses. The requirement is therefore instantaneous and flux-independent.
 \end{proof}
 
 Flux alters a pillar's \emph{operation}, not its \emph{existence}. During phases of rapid growth or unbounded resource influx, a constraint mechanism might be operationally latent ($f_{\mathrm{GOV}} \approx 0$), incurring no active coordination cost. Yet its \emph{structural capacity} must exist at $t$; if the mechanism is fundamentally absent, the system fails to persist the moment it reaches environmental saturation.
 
 
-\subsection{The Dynamic Budget: Contention for Shared Resources}
-\label{subsec:dynamic_budget}
+\subsection{Open Systems and the Dynamic Budget}
+\label{subsec:open_systems_dynamic_budget}
+Strict additivity ($Z_{\mathrm{net}} = \sum_i Z_i$) relies on the Quiescent Steady State, where orthogonal domains prevent interference. In open systems, external flux raises the dissipation ceiling; as operations scale against this moving ceiling, resource contention forces non-linear cross-coupling $\Delta(t)$ between previously orthogonal pillars:
 
-Strict additivity ($Z_{\mathrm{IE}} = \sum_i Z_i$) relies on the Quiescent Steady State, where orthogonal domains prevent interference. In open systems, external flux raises the dissipation ceiling to a dynamic boundary $\mathcal{D}_{\max}(t)$; as operations scale against this moving ceiling, resource contention forces non-linear cross-coupling ($\Delta(t)$) between previously orthogonal pillars:
 \begin{equation}
-\label{eq:open_balance}
-    Z_{\mathrm{IE}}(t) = \sum_i Z_i(t) \;+\; \Delta(t).
+    \label{eq:open_balance}
+    Z_{\mathrm{net}}(t) = \sum_i Z_i(t) + \Delta(t).
 \end{equation}
 
-We derive this cross-coupling from the discrete substrate properties already established: the Margolus-Levitin bound quantizes time into minimum cycles $\tau$, and Landauer's principle assigns a fixed toll $\xi_0$ to every unresolved distinguishable state.
-
-\textbf{Discrete coordination capacity.} Protocol and Governor are coordination functions executed by the same substrate that performs all state transitions. The Margolus-Levitin limit bounds the minimum time between distinguishable operations, yielding a substrate-level coordination rate $\nu_{\max}$: the maximum number of coordination events the substrate can resolve per unit time. This is a geometric invariant of the substrate. In QSS, Protocol demand $\nu_{\mathrm{PRO}}$ and Governor demand $\nu_{\mathrm{GOV}}$ satisfy $\nu_{\mathrm{PRO}} + \nu_{\mathrm{GOV}} \ll \nu_{\max}$, leaving cycles effectively empty and preserving orthogonality ($\Delta = 0$).
-
-\textbf{Spatial independence and the load definition.} In QSS, the six pillars operate on orthogonal domains: the subsystems generating Protocol and Governor demands share no microstate. This spatial independence licenses the additive definition of the dimensionless coordination load:
-\begin{equation}
-    \rho(t) = \frac{\nu_{\mathrm{PRO}}(t) + \nu_{\mathrm{GOV}}(t)}{\nu_{\max}}.
-\end{equation}
-
-\textbf{Temporal independence and the geometric waiting distribution.} The load definition above governs instantaneous rates, not waiting-time statistics. To derive the latter, we model the substrate's retry behavior as a mean-field, memoryless process: in each Margolus-Levitin cycle, the substrate presents pending events to its coordination capacity symmetrically, with no internal hierarchy that would privilege one pillar over another. The probability that a specific pending event is selected for service in a given cycle is therefore $1-\rho$, and the probability it is deferred is $\rho$. This memoryless retry assumption is a modeling hypothesis about temporal independence, not a further consequence of pillar orthogonality. Under it, the probability of waiting exactly $k$ cycles is
-\begin{equation}
-    P(k) = \rho^k (1-\rho),
-\end{equation}
-and the mean number of pending cycles per demand is
-\begin{equation}
-    \langle k \rangle = \sum_{k=0}^{\infty} k \, \rho^k (1-\rho) = \frac{\rho}{1-\rho}.
-\end{equation}
-
-\textbf{The coordination cross-term.} Each pending cycle represents an uncoordinated operation held in a distinguishable state against the substrate noise floor. By Landauer's principle, each such cycle incurs the fixed entropic toll $\xi_0$. The excess dissipation rate is the toll per cycle times the mean number of pending Governor events times the cycle rate $\nu_{\max}$.
-
-Decomposing the pending pool by demand stream, the Governor's share is proportional to its load fraction. The mean number of pending Governor events is $\langle N_{\mathrm{GOV}} \rangle = \rho_{\mathrm{GOV}} / (1-\rho)$, where $\rho_{\mathrm{GOV}} = \nu_{\mathrm{GOV}}/\nu_{\max}$. The Governor's coordination cross-term is therefore
-\begin{equation}
-    \Delta_{\mathrm{GOV}}(t) = \xi_0 \, \nu_{\max} \, \langle N_{\mathrm{GOV}} \rangle = \xi_0 \, \nu_{\max} \left( \frac{\rho_{\mathrm{GOV}}}{1-\rho} \right),
-\end{equation}
-a rate, dimensionally consistent with $Z_{\mathrm{IE}}(t)$ in \cref{eq:open_balance}.
-
-This demonstrates cross-coupling from discrete substrate properties: heavy Protocol routing ($\rho_{\mathrm{PRO}} \to 1$) inflates the Governor's entropic cost ($\Delta_{\mathrm{GOV}} \propto 1/(1-\rho_{\mathrm{PRO}})$) even with static Governor demand. The pillars cease to be orthogonal because they share a finite volumetric coordination capacity.
-
-\textbf{Macroscopic limits and the scope of the derivation.} The geometric form relies on two substrate properties: discrete cycles (from the Margolus-Levitin bound) and symmetric, memoryless retry (a mean-field hypothesis). Within this scope, three regimes emerge:
-
+A stochastic derivation of $\Delta(t)$ from substrate-native properties is developed in \cref{app:dynamic_budget}; three regimes emerge as its limits, where $\rho$ is the dimensionless coordination load:
 \begin{enumerate}
-    \item \textbf{Onsager Recovery (Low $\rho$):} Expanding $\Delta \propto \rho + \mathcal{O}(\rho^2)$, the leading-order term is linear in the load. QSS additivity is the zeroth-order behavior of the uncongested substrate.
-    \item \textbf{The Thrashing Asymptote (High $\rho$):} As $\mathcal{D} \to \mathcal{D}_{\max}$, the rational divergence dominates. The system expends disproportionate action managing contention, forcing structural pauses (apoptosis, circuit breakers) to shed load and avoid causal collapse.
-    \item \textbf{Correlated Demand Statistics:} The geometric derivation assumes demands are temporally independent at the cycle scale. Mild correlation modifies the prefactor while preserving the $\rho/(1-\rho)$ divergence structure for the same reason that Kingman's heavy-traffic formula retains the $(1-\rho)^{-1}$ pole when variance is finite. Strongly correlated, heavy-tailed, or long-range-dependent arrivals can alter the asymptotic form itself; this baseline covers the structurally independent, memoryless-retry case that defines the six-pillar architecture.
+    \item \textbf{Onsager Recovery (Low $\rho$):} $\Delta \to 0$; QSS additivity is the leading-order behavior.
+    \item \textbf{The Thrashing Asymptote (High $\rho$):} Coordination cost diverges as the dissipation ceiling is approached, forcing structural pauses (apoptosis, circuit breakers) to shed load.
+    \item \textbf{Kingman's Formula (Non-Markovian Demand):} Relaxing the memoryless assumption recovers the standard
+    heavy-traffic generalization, with the $\rho/(1-\rho)$ form as its memoryless special case.
 \end{enumerate}
+The derivation does not alter the necessity claim. The six pillars remain structurally mandatory regardless of the specific form of $\Delta(t)$; the idealized limit where $\Delta(t) \to 0$ recovers QSS additivity.
 
-The foundational claim that the six pillars are structurally mandatory is unaffected by the specific demand statistics governing $\Delta(t)$. Within this scope, the Entropic Balance Sheet takes the form $Z_{\mathrm{IE}} = \sum_i Z_i + \Delta(t)$, with strict QSS additivity as the idealized limit where the substrate's stochastic friction ($\Delta(t) \to 0$) vanishes.
+It also gives these three regimes what they have historically lacked: a single origin. Linear-response recovery, heavy-traffic divergence, and the correlated-demand generalization were each discovered independently, in unrelated fields, from field-specific premises. Here they emerge as three limits of one substrate function.
+
+% A further conjecture, not derived here: in a continuum limit this discrete geometric process may correspond to Brownian motion, with Onsager's regime as free diffusion, thrashing as reflection at a coordination barrier, and correlated demand as its fractional generalization. Three known diffusion regimes, if the correspondence holds, rather than three coincidences.

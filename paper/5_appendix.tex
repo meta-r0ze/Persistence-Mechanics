@@ -1,0 +1,29 @@
+\crefalias{section}{appendix}
+\section{The Dynamic Budget: Contention for Shared Resources}
+\label{app:dynamic_budget}
+
+We derive the cross-coupling term $\Delta(t)$ (\cref{eq:open_balance}) from the discrete substrate properties already established: the Margolus-Levitin bound quantizes time into minimum cycles $\tau$, and Landauer's principle assigns a fixed toll $\xi_0$ to every unresolved distinguishable state.
+
+\subsection{Discrete coordination capacity} Protocol and Governor are coordination functions executed by the same substrate that performs all state transitions. The Margolus-Levitin limit bounds the minimum time between distinguishable operations, yielding a substrate-level coordination rate $\nu_{\max}$ -- a geometric invariant of the
+substrate, not a fitted parameter. In QSS, Protocol demand $\nu_{\mathrm{PRO}}$ and Governor demand $\nu_{\mathrm{GOV}}$ satisfy $\nu_{\mathrm{PRO}} + \nu_{\mathrm{GOV}} \ll \nu_{\max}$, leaving cycles effectively empty and preserving orthogonality ($\Delta = 0$).
+
+\subsection{Spatial independence and the load definition} In QSS, the six pillars operate on orthogonal domains: the subsystems generating Protocol and Governor demands share no microstate. This licenses the additive coordination load
+\begin{equation}
+    \rho(t) = \frac{\nu_{\mathrm{PRO}}(t) + \nu_{\mathrm{GOV}}(t)}{\nu_{\max}}.
+\end{equation}
+
+\subsection{Temporal independence and the geometric waiting distribution} The load above governs instantaneous rates, not waiting-time statistics. To derive the latter, we model the substrate's retry behavior as a mean-field, memoryless process: each cycle presents pending events to coordination capacity symmetrically,
+with no hierarchy privileging one pillar. The probability a specific pending event is served in a given cycle is $1-\rho$; this memoryless-retry assumption is a modeling hypothesis about temporal
+independence, not a consequence of pillar orthogonality. Under it, the probability of waiting exactly $k$ cycles is $P(k) = \rho^k(1-\rho)$, and the mean number of pending cycles per demand is
+\begin{equation}
+    \langle k \rangle = \sum_{k=0}^{\infty} k \, \rho^k(1-\rho) = \frac{\rho}{1-\rho}.
+\end{equation}
+
+\subsection{The coordination cross-term} By Landauer's principle, each pending cycle incurs the fixed entropic toll $\xi_0$. Decomposing the pending pool by demand stream, the mean number of pending Governor events is $\langle N_{\mathrm{GOV}} \rangle = \rho_{\mathrm{GOV}} / (1-\rho)$, where $\rho_{\mathrm{GOV}} = \nu_{\mathrm{GOV}}/\nu_{\max}$. The Governor's coordination cross-term is therefore
+\begin{equation}
+    \Delta_{\mathrm{GOV}}(t) = \xi_0 \, \nu_{\max} \, \langle N_{\mathrm{GOV}} \rangle = \xi_0 \, \nu_{\max} \left( \frac{\rho_{\mathrm{GOV}}}{1-\rho} \right),
+\end{equation}
+a rate, dimensionally consistent with $Z_{\mathrm{net}}(t)$
+(\cref{eq:open_balance}). 
+
+\subsection{Scope and validity} This construction assumes discrete cycles (the Margolus-Levitin bound) and symmetric, memoryless retry (the mean-field hypothesis above). Strongly correlated, heavy-tailed, or long-range-dependent arrivals fall outside its scope.
