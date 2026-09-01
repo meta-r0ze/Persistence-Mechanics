@@ -1,6 +1,7 @@
 \section{Open Systems: Necessity Without Additivity}
 \label{sec:open_systems}
-Many persistent systems (cells, firms, ecosystems) are open, exchanging energy and information. But the necessity and sufficiency proofs of \cref{sec:architecture_of_persistence,sec:dynamics_of_persistence} were established strictly within QSS. We show necessity of the six pillars survives unchanged; only the Entropic Balance Sheet (\cref{subsec:entropic_balance_sheet}) requires re-derivation in flux-driven capacity.
+
+The Selection Principle and the Principle of Least Action were derived in the Quiescent Steady State: the zero-flux limit where no net energy or information enters or leaves. Many systems, however, exchange flux with their environment to persist. We show that the necessity of the six pillars survives this extension unchanged; only the net impedance ($Z_{\mathrm{net}}$, \cref{subsec:cost_of_persistence}) requires re-derivation in flux-driven capacity.
 
 \subsection{Pointwise Necessity and Operational Latency}
 \label{subsec:necessity_flux_independent}
@@ -15,7 +16,7 @@ For any system persisting past instant $t$, all six pillars must be structurally
 By the exponential filter (\cref{eq:survival_prob}), survival over a history $\Gamma$ is multiplicative. If any pillar is functionally absent during an arbitrarily small interval $\mathrm{d}t$, the local survival probability drops to zero ($q_t \to 0$) via the failure modes of \cref{subsec:pillars_necessity}. The entire multiplicative history collapses. The requirement is therefore instantaneous and flux-independent.
 \end{proof}
 
-Flux alters a pillar's \emph{operation}, not its \emph{existence}. During phases of rapid growth or unbounded resource influx, a constraint mechanism might be operationally latent ($f_{\mathrm{GOV}} \approx 0$), incurring no active coordination cost. Yet its \emph{structural capacity} must exist at $t$; if the mechanism is fundamentally absent, the system fails to persist the moment it reaches environmental saturation.
+Flux alters a pillar's \emph{operation}, not its \emph{existence}. During phases of rapid growth or unbounded resource influx, a control mechanism may exhibit low activation ($f_{\mathrm{GOV}} \approx 0$), minimizing active coordination expenditure. Yet its \emph{structural capacity} must exist at $t$; if the mechanism is fundamentally absent, the system fails to persist the moment it reaches environmental saturation.
 
 
 \subsection{Open Systems and the Dynamic Budget}
@@ -36,6 +37,6 @@ A stochastic derivation of $\Delta(t)$ from substrate-native properties is devel
 \end{enumerate}
 The derivation does not alter the necessity claim. The six pillars remain structurally mandatory regardless of the specific form of $\Delta(t)$; the idealized limit where $\Delta(t) \to 0$ recovers QSS additivity.
 
-It also gives these three regimes what they have historically lacked: a single origin. Linear-response recovery, heavy-traffic divergence, and the correlated-demand generalization were each discovered independently, in unrelated fields, from field-specific premises. Here they emerge as three limits of one substrate function.
+It also provides a unified derivation for these three regimes, which were previously analyzed independently. Linear-response recovery, heavy-traffic divergence, and the correlated-demand generalization were each discovered independently, in unrelated fields, from field-specific premises. Here they emerge as three limits of one substrate function.
 
 % A further conjecture, not derived here: in a continuum limit this discrete geometric process may correspond to Brownian motion, with Onsager's regime as free diffusion, thrashing as reflection at a coordination barrier, and correlated demand as its fractional generalization. Three known diffusion regimes, if the correspondence holds, rather than three coincidences.

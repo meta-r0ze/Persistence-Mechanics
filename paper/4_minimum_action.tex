@@ -17,7 +17,7 @@ In QSS, successive units are statistically independent dissipative events. The p
     = q^{S_\Phi[\Gamma]} 
 \end{equation}
 
-Using the identity $q^C = e^{C\ln q}$ with $C = S_\Phi[\Gamma]$, and defining $\beta \equiv -\ln q > 0$ (positive since $0 < q < 1$), we have $S_\Phi[\Gamma]\ln q = -\beta S_\Phi[\Gamma]$, turning \cref{eq:survival_prob1} into:
+Using the identity $q^C = e^{C\ln q}$ with $C = S_\Phi[\Gamma]$, and defining $\beta \equiv -\ln q > 0$ (positive since $0 < q < 1$), we have $S_\Phi[\Gamma]\ln q = -\beta S_\Phi[\Gamma]$, yielding the survival probability distribution:
 
 \begin{equation}
 \label{eq:survival_prob}
@@ -26,12 +26,12 @@ Using the identity $q^C = e^{C\ln q}$ with $C = S_\Phi[\Gamma]$, and defining $\
 
 Here $\beta \equiv -\ln q$ is the substrate's inverse entropic tolerance, a geometric invariant of the channel. For discrete substrates, $q$ is determined by the channel geometry; in continuous media, $\beta$ emerges from the substrate's noise spectral density.
 
-The form itself is the informational analogue of the Boltzmann distribution $P \propto e^{-E/k_BT}$, with $S_\Phi$ playing the role of energy and $\beta$ the role of inverse temperature. The Boltzmann form is derived from ensemble statistics at equilibrium and this form is derived from the multiplicative compounding of independent transition risk along a single history, presupposing neither equilibrium, a thermal bath, nor a physical substrate. Both converge on the same exponential law; the informational route recovers it under strictly weaker assumptions: the substrate's own noise geometry does the work that equilibrium, a thermal bath, and a variational functional do for the classical derivation.
+The form itself is the informational analogue of the Boltzmann distribution $P \propto e^{-E/k_BT}$, with $S_\Phi$ playing the role of energy and $\beta$ the role of inverse temperature. The Boltzmann form is derived from ensemble statistics at equilibrium and this form is derived from the multiplicative compounding of independent transition risk along a single history, presupposing neither equilibrium, a thermal bath, nor a physical substrate. Both converge on the same exponential law; the informational route recovers it under strictly weaker assumptions: the substrate noise geometry replaces the thermodynamic bath and equilibrium assumptions required by classical mechanics.
 
 \subsection{The Severity of the Selection Principle}
 \label{subsec:severity}
 
-How harsh is the Selection Principle? Let $\Gamma_{\text{min}}$ be the minimal-action trajectory and $\Gamma_{\text{var}}$ any variant path with a deviation $\delta S_\Phi > 0$. Over any observation window, the relative survival probability is:
+The operational severity of this selection mechanism can be quantified by comparing trajectories. Let $\Gamma_{\text{min}}$ denote the minimal-action trajectory and $\Gamma_{\text{var}}$ any non-minimal path with a action deviation $\delta S_\Phi > 0$. Over any observation window, the relative survival probability is:
 
 \begin{equation}
 \label{eq:severity}
@@ -40,9 +40,9 @@ How harsh is the Selection Principle? Let $\Gamma_{\text{min}}$ be the minimal-a
 
 When the fundamental update cycle is much shorter than the observation timescale, even a small per-transition deviation compounds into a vast accumulated $\delta S_\Phi$, and the survival ratio $P(\Gamma_{\text{var}})/P(\Gamma_{\text{min}})$ falls to zero. The gap between the best trajectory and the next-best widens without bound.
 
-\subsection{No Merit Required}
+\subsection{Eliminative vs. Teleological Selection}
 \label{subsec:teleology}
-Severity is a statement about the losers, not the winner. It says nothing about whether $\Gamma_{\text{min}}$ is efficient, elegant, or well-suited to anything, only that every alternative to it decayed faster. A mediocre trajectory survives just as certainly as an excellent one, provided everything else was worse. What looks like design, foresight, or purpose is not a property of the winner; it is the absence of its competition.
+Severity is a statement about the losers, not the winner. It says nothing about whether $\Gamma_{\text{min}}$ is efficient, elegant, or well-suited to anything, only that every alternative to it decayed faster. A sub-optimal trajectory survives just as certainly as an optimal one, provided everything else was worse. What looks like design, foresight, or purpose is not a property of the winner; it is the absence of its competition.
 
 \subsection{Minimum Action as Survivorship}
 \label{subsec:minimum_action_as_survivorship}
@@ -56,4 +56,4 @@ In QSS, the observable trajectories of any persistent system are those achieving
 By the Selection Principle and \cref{eq:severity}, only trajectories minimizing $S_\Phi$ remain observable; the observable set is therefore the argmin of $S_\Phi[\Gamma]$ over candidate histories $\Gamma$, possibly containing more than one history if the minimum is not unique.
 \end{proof}
 
-Standard quantum mechanics grounds the Principle of Least Action in phase interference. The Selection Principle offers a distinct, classical mechanism (informational elimination) by which nature could favor certain histories: the substrate itself acts as a filter, and what remains observable is only what has not yet dissipated.
+Standard quantum mechanics grounds the Principle of Least Action in phase interference. The Selection Principle offers a distinct, classical mechanism (informational elimination) by which candidate physical histories are selected: the substrate itself acts as a filter, and what remains observable is only what has not yet dissipated.

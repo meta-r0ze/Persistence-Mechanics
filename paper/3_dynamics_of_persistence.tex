@@ -1,24 +1,22 @@
 \section{The Dynamics of Persistence}
 \label{sec:dynamics_of_persistence}
-The static architecture of persistence necessitates a minimal dynamical description. A system that persists maintains structural coherence against entropic erosion; therefore it must export internal entropy to its environment at a rate that balances what it produces. We construct the measure of that dissipation from the three irreducible primitives that any dynamical law governing persistent systems must presuppose, prove their necessity, and integrate them into a cumulative Entropic Action that closes the loop back to the six-pillar architecture.
-
+The static architecture of persistence necessitates a minimal dynamical description. A system that persists maintains structural coherence against entropic erosion; therefore it must export internal entropy to its environment at a rate that balances what it produces. We construct the measure of that dissipation from the three irreducible primitives that any dynamical law governing persistent systems must presuppose, prove their necessity, and integrate them into a cumulative Entropic Action that maps directly to the six-pillar architecture.
 
 % Define the requirements for dynamics of persistence and define the Quiescent Steady State.
 \subsection{The Cost of State Transitions}
 \label{subsec:min_entropy}
-While a system's architecture provides the capability to persist, the operation of those pillars determines how long it actually persists. Any state transition does work, and all work generates entropy; left unconstrained, a system's own activity can result in its rapid dissolution.
+While a system's architecture provides the capability to persist, the operation of those pillars determines how long it actually persists. Any state transition does work, and all work generates entropy; left unconstrained, a system's own activity can destabilizes the system.
 
-Following Prigogine\cite{prigogine_introduction_1961}, persistence therefore requires two behaviors: internal entropy production must be exported to the environment fast enough that the system's own entropy never rises, and that production rate itself settles to the smallest value consistent with holding steady state ($\delta\sigma = 0$), below this floor a system is not yet stable, and above it, every transition is spending more than persistence strictly requires.
+Following Prigogine\cite{prigogine_introduction_1961}, persistence therefore requires two behaviors: internal entropy production must be exported to the environment fast enough that the system's own entropy does not rise without bound in the aggregate, and that production rate itself settles to the smallest value consistent with holding steady state ($\delta\sigma = 0$): below this floor, the system cannot maintain stability; above it, state transitions incur unnecessary thermodynamic dissipation.
 
-We quantify this at its limiting case, QSS, $Z_{\mathrm{net}}$ is constant, and the entropic balance sheet (\cref{subsec:entropic_balance_sheet}) is strictly additive. The dynamic evolution of open systems is left to future work.
+We quantify this at its limiting case, QSS, $Z_{\mathrm{net}}$ is constant, and the cost of persistence is strictly additive (\cref{subsec:cost_of_persistence}). The dynamic evolution of open systems is left to future work.
 
 
-\subsection{The Dissipation Density}
-\label{subsec:dissipation_density}
+\subsection{The Three Primitives}
+\label{subsec:three_primitives}
 Prigogine's Minimum Entropy Production theorem establishes \textit{that} a persistent system must minimize its entropy production rate, but not \textit{what} defines that rate. We derive the minimum dynamical description by identifying the irreducible primitives that any state transition law must presuppose.
 
-When the static six-pillar architecture moves through time, any state transition (a local dissipative event) can be described along three axes inherent to the concept of change itself: what changes (a structured payload), what permits the change to occur (an energetic toll), and how often change occurs (a temporal frequency). These are
-not assigned to individual pillars, but are properties of the transition itself.
+When the static six-pillar architecture moves through time, any state transition (a local dissipative event) can be parameterized by three fundamental variables: what changes (a structured payload), what permits the change to occur (an energetic toll), and how often change occurs (a temporal frequency).
 
 \begin{enumerate}
     \item \textbf{A structured payload (The Subject):} A persistent system maintains a specific configuration rather than a statistical ensemble. Its local state is quantified by the structural complexity $\mathbf{K}$: the Kolmogorov complexity of the local configuration relative to the substrate's reference encoding, expressed in substrate-natural units of elementary logical operations per local state (up to the invariant additive constant of the substrate's instruction set).\footnote{Uncomputability does not preclude operational use: the algorithmic-information-theory literature routinely substitutes computable proxies: Minimum Description Length, Lempel-Ziv complexity, normalized compression distance, as finite-sample estimators of $\mathbf{K}$, a practice this paper's baseline derivation does not require but that applied instantiations can draw on directly.} \textit{Convergent Evidence (Kolmogorov Complexity \cite{kolmogorov_three_1968}):} The algorithmic information content of a state is the irreducible payload carried by any transition.
@@ -28,18 +26,30 @@ not assigned to individual pillars, but are properties of the transition itself.
     \item \textbf{A coordinated rate (The Frequency):} State updates must occur at a transition flux $f$, a rate density of state updates per unit substrate measure. \textit{Convergent Evidence (The Nyquist--Shannon Sampling Theorem \cite{shannon_communication_1949}):} A signal can only be reconstructed without loss if sampled at a rate exceeding its bandwidth; below that rate, information is irrecoverably lost to aliasing. $f$ is the substrate-level analogue of this minimum sampling rate, required to track the Map against noise.
 \end{enumerate}
 
-The pillars operate on orthogonal domains (\cref{subsec:entropic_balance_sheet}) in the QSS; $\mathbf{K}$, $\xi$, and $f$ inherit this independence, each drawing on a distinct domain: algorithmic description, informational toll, and temporal rate, respectively. 
+The pillars operate on orthogonal domains (\cref{subsec:cost_of_persistence}) in the QSS; $\mathbf{K}$, $\xi$, and $f$ inherit this independence, each drawing on a distinct domain: algorithmic description, informational toll, and temporal rate, respectively. 
 
-Because a local dissipation metric must yield a uniform density of elementary transitions per unit substrate measure, its functional form is dimensionally constrained, these brackets track substrate counting units (operations, states, actions), not physical mass-length-time dimensions, the same sense in which a bit count or a
-radian is dimensionless yet still carried explicitly through a derivation. With $\mathbf{K}$ in [operations / local state], $\xi$ in [action / operation], and $f$ in [states / (substrate measure $\cdot$ time)], their strictly linear product yields $\mathcal{D}$ in [action / (substrate measure $\cdot$ time)].
+\subsection{The Dissipation Density}
+\label{subsec:dissipation_density}
 
-The local \textbf{Dissipation Density} is therefore:
+The three primitives must combine into a single scalar dissipation measure. Dimensional bookkeeping constrains the form: a local dissipation metric must yield a uniform density of elementary transitions per unit substrate measure. These brackets track substrate counting units (operations, states, actions), not physical mass-length-time dimensions, the same sense in which a bit count or a radian is dimensionless yet still carried explicitly through a derivation. With $\mathbf{K}$ in [operations / local state], $\xi$ in [entropic toll / operation], and $f$ in [states / (substrate measure $\cdot$ time)], their strictly linear product yields $\mathcal{D}$ in [entropic toll / (substrate measure $\cdot$ time)].
+
+Dimensional bookkeeping alone does not fix the form uniquely. The dissipation metric must satisfy three joint requirements: vanishing when any primitive is absent; separability across orthogonal domains; and extensivity (under continuity) in each primitive independently.
+
+\textbf{Vanishing.} $\mathcal{D}$ must vanish when any factor reaches zero, matching the counterfactual failure modes of \cref{subsec:action_necessity}: removing $\xi$, $\mathbf{K}$,
+or $f$ drives lifetime to zero. A non-vanishing form would permit dissipation without the corresponding pillar, contradicting the necessity proof that its absence causes collapse.
+
+\textbf{Separability.} Because the three primitives draw on orthogonal domains (\cref{subsec:cost_of_persistence}), cross-terms such as $\xi + \mathbf{K}$ or $e^{\xi \mathbf{K}}$---which couple dissipation across independent domains---are excluded. The functional form must be multiplicatively separable: $\mathcal{D} = g(\xi) \cdot h(\mathbf{K}) \cdot k(f)$.
+
+\textbf{Extensivity.} Doubling any one factor while holding the other two fixed must double $\mathcal{D}$. By Cauchy's functional equation, $g(\lambda\xi) = \lambda g(\xi)$ for all $\lambda > 0$
+implies $g(\xi) = c_\xi \xi$ under continuity, and likewise for $h$ and $k$---ruling out both fractional-power forms such as $(\xi \cdot \mathbf{K} \cdot f)^{1/3}$ and higher-power single-variable forms such as $\xi \mathbf{K}^2 f$.
+
+The general continuous, separable, extensive form is therefore $\mathcal{D} = c \cdot \xi \cdot \mathbf{K} \cdot f$. The constant $c$ is absorbed into the substrate's natural units (one elementary
+transition per unit substrate measure), yielding the canonical product:
 
 \begin{equation}
-\label{eq:dissipation_density}
+    \label{eq:dissipation_density}
     \mathcal{D} = \xi \cdot \mathbf{K} \cdot f
 \end{equation}
-
 
 \subsection{Necessity: Counterfactual Failure Modes}
 \label{subsec:action_necessity}
@@ -56,13 +66,10 @@ The necessity of $(\xi, \mathbf{K}, f)$ follows by the same counterfactual metho
 
 Since the removal of any factor results in termination, the set $(\xi, \mathbf{K}, f)$ is necessary.
 
-\subsection{Necessity of the Product Form}
-\label{subsec:product_form_necessity}
-The product form, the geometric mean and other symmetric functions all vanishes when any factor reaches zero. What the product form uniquely satisfies is extensivity: doubling any one factor while holding the other two fixed must double the local dissipation, since twice the transition rate at identical cost and complexity is twice the dissipation, not a fractional multiple. Among functions vanishing correctly on any factor's absence, only the linear product $\mathcal{D} = \xi \cdot \mathbf{K} \cdot f$ is extensive in each factor independently; fractional-power forms such as $(\xi \cdot \mathbf{K} \cdot f)^{1/3}$ satisfy vanishing but not extensivity, and are excluded on that ground.
 
 \subsection{Sufficiency: No Fourth Factor}
 \label{subsec:action_sufficiency}
-Given the multiplicative form, a missing factor would drive $\mathcal{D}$ to zero rather than merely reduce it, leaving no independent dimension for a fourth factor to occupy. Any property proposed as a fourth factor, on inspection, either reduces to a combination of these three or describes something about the environment rather than the system itself.
+Given the multiplicative form, a missing factor would drive $\mathcal{D}$ to zero rather than merely reduce it, leaving no independent dimension for a fourth factor to occupy. Any property proposed as a fourth factor, either decomposes into combination of these three or specifies environmental boundary conditions rather than intrinsic system properties.
 
 \subsection{The Complexity Trade-off}
 \label{subsec:complexity_tradeoff}
@@ -87,14 +94,15 @@ A biological cell illustrates the binding constraint: ATP cost per operation ($\
 
 \subsection{The Entropic Action}
 \label{subsec:entropic_action}
-Having established the conditions for structural survival, we need a way to compare surviving systems by lifetime. A system's viability cannot be judged pointwise: no single pillar sustains a transition alone, so no single local event determines survival either, what accumulates across the whole system is what matters. We build that accumulated quantity in two steps: first collapsing the system's spatial extent into one number at each instant, then accumulating that number over its lifetime.
+Having established the conditions for structural survival, we need a way to compare surviving systems by lifetime. A system's viability cannot be judged pointwise: no single pillar sustains a transition alone, so no single local event determines survival either, the viability is the accumulation across the lifetime. We build that accumulated quantity in two steps: first collapsing the system's spatial extent into one number at each instant, then accumulating that number over its lifetime.
 
-$\mathcal{D}$'s multiplicative, local form and $Z_{\mathrm{net}}$'s additive, global one (\cref{subsec:entropic_balance_sheet}) are reconciled by integrating over the system's spatial footprint $\Sigma(t)$: many local multiplicative events, summed, become one global additive quantity at each instant:
+$\mathcal{D}$'s multiplicative, local form and $Z_{\mathrm{net}}$'s additive, global one (\cref{subsec:cost_of_persistence}) are reconciled by integrating over the system's spatial footprint $\Sigma(t)$: many local multiplicative events, summed, become one global additive quantity at each instant:
 
 \begin{equation}
 \label{eq:impedance_density}
     Z_{\mathrm{net}}(t) = \int_{\Sigma(t)} \mathcal{D} \, d\mu
-\end{equation}
+\end{equation} 
+
 \noindent with $\mathrm{d}\mu$ the counting measure on the discrete substrate state space, a sum over discrete points, not a continuous integral.
 
 With the impedance $Z_{\mathrm{net}}(t)$ known to be the system's total instantaneous dissipation, the cumulative \textbf{Entropic Action} is the time integral of that impedance over the system's lifetime:
@@ -115,7 +123,7 @@ Minimization of $S_\Phi$ is only possible for systems implementing the complete 
 Minimizing $S_\Phi$ requires $\mathcal{D}$ strictly positive and finite, hence $\xi, \mathbf{K}, f > 0$ (\cref{eq:dissipation_density}). By the pillar-to-factor dependencies established in \cref{subsec:dissipation_density}, this requires all six pillars simultaneously: Toll and Capacity sustain $\xi > 0$; Map sustains $\mathbf{K} > 0$; Protocol, Governor, and Margin jointly sustain $f > 0$. Removing any one pillar collapses the corresponding factor to zero (reproducing the failure modes of \cref{subsec:action_necessity}) so any trajectory with $\delta S_\Phi = 0$ that maintains structural coherence necessarily encodes the complete architecture.
 \end{proof}
 
-The Entropic Action is therefore not defined independently of the architecture; the two are one closed claim.
+The Entropic Action is therefore not defined independently of the architecture.
 
 \subsection{The Selection Principle}
 \label{subsec:selection_principle}
