@@ -24,7 +24,7 @@ Each therefore demands \textbf{provision} (establishing the means to satisfy the
 \textbf{Conservation} & Map      & Protocol \\
 \textbf{Causality}    & Toll     & Governor
 \end{tabular}
-\caption{By defining a persisting system as an entity possessing finite extent, conserved content, and causal sequence, and defining survival as the provisioning and defense of these properties, we establish a logically closed $3 \cdot 2$  taxonomy. This yields six necessary and sufficient pillars.}
+\caption{By defining a persisting system as an entity possessing finite extent, conserved content, and causal sequence, and defining survival as the provisioning and defense of these properties, we establish a logically closed $3 \cdot 2$  taxonomy. This yields six necessary pillars.}
 \label{tab:pillars}
 \end{table}
 
@@ -77,9 +77,8 @@ The necessity of the set $\mathbb{P}$ $=$ $\{\mathrm{CAP},$ $\mathrm{MAP},$ $\ma
 
     \item \textbf{No Protocol (Decoherence):} Components act on statistically independent, outdated states, with no mechanism to reconcile them; $\tau \to 0$ by organizational fragmentation.
 
+    \item \textbf{No Toll (Zeno Collapse):} A causal sequence requires irreducibly discrete state transitions. Without an irreducible toll per operation, the sequence can be infinitely subdivided; no individual step remains distinguishable as a cause of the next, and the ordering required for well-defined evolution dissolves. $\tau \to 0$ by causal decoherence.
     
-    \item \textbf{No Toll (Zeno Collapse):} State transitions require irreducible time and energy per the Margolus-Levitin limit\cite{margolus_maximum_1998}. Without this cost, updates occur instantaneously, collapsing the causal sequence (a causal freeze, in the spirit of Zeno's paradox of infinite subdivided motion). $\tau \to 0$ by causal collapse.
-
     \item \textbf{No Governor (Divergence):} Unconstrained positive feedback drives resource consumption toward unbounded growth, exhausting the substrate or diverging past any recoverable bound; $\tau \to 0$ by unbounded runaway.
 \end{itemize}
     
@@ -104,22 +103,23 @@ Every pillar imposes a strictly positive cost: a system cannot maintain boundari
 
 The system pays a continuous \emph{coordination cost} (maintaining Protocol and Governor) as an insurance premium to avoid a catastrophic entropic penalty (fragmentation or runaway divergence). In control theory, this is analogous to negative feedback: the active controller consumes continuous energy to operate, but its regulation ensures the closed loop's total dissipation is lower than the open-loop alternative.
 
-To quantify this baseline structural cost without conflating it with environmental work, we isolate the system at its zero-flux limit. In Quiescent Steady State (QSS), no net energy or information enters or leaves, the six pillars operate on functionally orthogonal domains, so their contributions do not interfere. The Net Entropic Impedance is therefore a strictly additive budget across these independent channels:
+To quantify this baseline structural cost without conflating it with environmental work, we isolate the system at its zero-flux limit. In Quiescent Steady State (QSS), no net energy or information enters or leaves. The six pillars operate on functionally orthogonal domains, so their contributions do not interfere. The Net Entropic Impedance is therefore a strictly additive budget across these independent channels:
 
 \begin{equation}
 \label{eq:entropic_balance}
-    Z_{\mathrm{net}} = Z_{\mathrm{CAP}} + Z_{\mathrm{MAP}} + Z_{\mathrm{TOL}} + Z_{\mathrm{MAR}} + Z_{\mathrm{PRO}} + Z_{\mathrm{GOV}}
+    \bar{Z}_{\mathrm{net}} = Z_{\mathrm{CAP}} + Z_{\mathrm{MAP}} + Z_{\mathrm{TOL}} + Z_{\mathrm{MAR}} + Z_{\mathrm{PRO}} + Z_{\mathrm{GOV}}
 \end{equation}
 
 Because the pillars occupy orthogonal domains at zero flux, any correlation between them is already priced into the individual coordination terms $Z_{\mathrm{PRO}}$ and $Z_{\mathrm{GOV}}$; no additional cross-term is needed to capture coupling between pillars within this baseline. Coupling outside QSS introduces non-linear contention, which we formalize in \cref{sec:open_systems}.
 
+
 % Answering the readers question of .... "isn't this just [information theory, thermodynamics, control theory] rebranded?"
 \subsection{Relation to Existing Disciplines}
 \label{subsec:relations}
-Previous disciplines have encountered pieces of the six-pillar architecture already. In each case the components were assumed to exist and not recognized as instances of one invariant beyond the disciplines own domain. The universal architecture supplies what each was missing: a proof of why exactly these components are required, and the recognition that domains studying them in isolation have been studying the same architecture all along.
+Previous disciplines have encountered pieces of the six-pillar architecture already. In each case the components were taken as given, not recognized as instances of one invariant beyond the discipline's own domain. The universal architecture frames these components as convergent evidence for a single structural requirement: each domain encountered the same architecture from its own direction, and the present mechanics makes that convergence explicit.
 
 \subsubsection{Relation to Information Theory}
-Channel optimization repeatedly encounters parameters corresponding to the six pillars: channel capacity (Capacity), codebook topology (Map), handshaking and framing (Protocol), power constraints (Governor), processing overhead (Toll), and link margins (Margin). Classical information theory treats these six as externally specified boundary conditions and optimizes throughput conditioned on them, without asking why a physical system must instantiate all six simply to persist against entropic erasure. 
+Channel optimization repeatedly encounters parameters corresponding to the six pillars: channel capacity (Capacity), codebook topology (Map), handshaking and framing (Protocol), power constraints (Governor), processing overhead (Toll), and link margins (Margin). Classical information theory treats these six as externally specified boundary conditions and optimizes throughput conditioned on them, without asking why a physical system must instantiate all six simply to persist against entropic erasure.
 
 % Describe how thermodynamics and PM are different
 \subsubsection{Relation to Thermodynamics}
@@ -141,4 +141,4 @@ staffed. Its four given components (the plant, the sensor, the controller, and t
 
 The remaining two pillars are rarely canonized alongside the first four as they are not physical components, but describe how the four components behave under time and stress. Time delays, bandwidth limits, and processing latency ($\rightarrow$ Toll) were minimized as engineering overhead and gain/phase margins ($\rightarrow$ Margin) were tuned for stability.
 
-Control theory asks how to regulate an existing system; the present mechanics establishes the architecture that makes existence possible. The classical four-component loop is not a rival account but one physical instantiation of the six-pillar invariant.
+Control theory asks how to regulate an existing system; the present mechanics derives the architecture that any existing system must instantiate. The classical four-component loop is not a rival account but one physical instantiation of the six-pillar invariant.

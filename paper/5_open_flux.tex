@@ -1,6 +1,5 @@
 \section{Open Systems: Necessity Without Additivity}
 \label{sec:open_systems}
-
 The Selection Principle and the Principle of Least Action were derived in the Quiescent Steady State: the zero-flux limit where no net energy or information enters or leaves. Many systems, however, exchange flux with their environment to persist. We show that the necessity of the six pillars survives this extension unchanged; only the net impedance ($Z_{\mathrm{net}}$, \cref{subsec:cost_of_persistence}) requires re-derivation in flux-driven capacity.
 
 \subsection{Pointwise Necessity and Operational Latency}
@@ -9,11 +8,11 @@ Because the substrate continuously filters for causal coherence, survival is an 
 
 \begin{proposition}[Pointwise Necessity]
 \label{prop:pointwise_necessity}
-For any system persisting past instant $t$, all six pillars must be structurally instantiated at $t$, regardless of external flux $\mathrm{d}_eS(t)$.
+For any system persisting past instant $t$, all six pillars must be structurally instantiated at $t$, regardless of external flux.
 \end{proposition}
 
 \begin{proof}
-By the exponential filter (\cref{eq:survival_prob}), survival over a history $\Gamma$ is multiplicative. If any pillar is functionally absent during an arbitrarily small interval $\mathrm{d}t$, the local survival probability drops to zero ($q_t \to 0$) via the failure modes of \cref{subsec:pillars_necessity}. The entire multiplicative history collapses. The requirement is therefore instantaneous and flux-independent.
+By the counterfactual failure modes of \cref{subsec:pillars_necessity} and \cref{subsec:action_necessity}, the absence of any pillar drives the corresponding primitive to zero ($c \to 0$, $K \to 0$, or $f \to 0$), causing the system's expected lifetime to vanish ($\tau \to 0$). For any finite interval $\mathrm{d}t$, the probability of surviving from $t$ to $t+\mathrm{d}t$ therefore tends to zero. The requirement is instantaneous and flux-independent.
 \end{proof}
 
 Flux alters a pillar's \emph{operation}, not its \emph{existence}. During phases of rapid growth or unbounded resource influx, a control mechanism may exhibit low activation ($f_{\mathrm{GOV}} \approx 0$), minimizing active coordination expenditure. Yet its \emph{structural capacity} must exist at $t$; if the mechanism is fundamentally absent, the system fails to persist the moment it reaches environmental saturation.
@@ -21,7 +20,7 @@ Flux alters a pillar's \emph{operation}, not its \emph{existence}. During phases
 
 \subsection{Open Systems and the Dynamic Budget}
 \label{subsec:open_systems_dynamic_budget}
-Strict additivity ($Z_{\mathrm{net}} = \sum_i Z_i$) relies on the Quiescent Steady State, where orthogonal domains prevent interference. In open systems, external flux raises the dissipation ceiling; as operations scale against this moving ceiling, resource contention forces non-linear cross-coupling $\Delta(t)$ between previously orthogonal pillars:
+Strict additivity ($\bar{Z}_{\mathrm{net}} = \sum_i Z_i$) relies on the Quiescent Steady State, where orthogonal domains prevent interference. In open systems, external flux raises the dissipation ceiling; as operations scale against this moving ceiling, resource contention forces non-linear cross-coupling $\Delta(t)$ between previously orthogonal pillars:
 
 \begin{equation}
     \label{eq:open_balance}
@@ -30,13 +29,12 @@ Strict additivity ($Z_{\mathrm{net}} = \sum_i Z_i$) relies on the Quiescent Stea
 
 A stochastic derivation of $\Delta(t)$ from substrate-native properties is developed in \cref{app:dynamic_budget}; three regimes emerge as its limits, where $\rho$ is the dimensionless coordination load:
 \begin{enumerate}
-    \item \textbf{Onsager Recovery (Low $\rho$):} $\Delta \to 0$; QSS additivity is the leading-order behavior.
-    \item \textbf{The Thrashing Asymptote (High $\rho$):} Coordination cost diverges as the dissipation ceiling is approached, forcing structural pauses (apoptosis, circuit breakers) to shed load.
-    \item \textbf{Kingman's Formula (Non-Markovian Demand):} Relaxing the memoryless assumption recovers the standard
-    heavy-traffic generalization, with the $\rho/(1-\rho)$ form as its memoryless special case.
+    \item \textbf{Linear-Response Regime (Low $\rho$):} $\Delta \to 0$; QSS additivity is the leading-order behavior.
+    \item \textbf{Saturation-Divergence Regime (High $\rho$):} Coordination cost diverges as the dissipation ceiling is approached, forcing structural pauses (apoptosis, circuit breakers) to shed load.
+    \item \textbf{Correlated-Demand Regime (Non-Markovian):} Relaxing the memoryless assumption recovers the standard heavy-traffic generalization, with the $\rho/(1-\rho)$ form as its memoryless special case.
 \end{enumerate}
 The derivation does not alter the necessity claim. The six pillars remain structurally mandatory regardless of the specific form of $\Delta(t)$; the idealized limit where $\Delta(t) \to 0$ recovers QSS additivity.
 
-It also provides a unified derivation for these three regimes, which were previously analyzed independently. Linear-response recovery, heavy-traffic divergence, and the correlated-demand generalization were each discovered independently, in unrelated fields, from field-specific premises. Here they emerge as three limits of one substrate function.
+That derivation also provides a unified account of these three regimes, which were previously analyzed independently. Linear-response recovery, heavy-traffic divergence, and the correlated-demand generalization were each discovered independently in unrelated fields. Here they emerge as three limits of one substrate function.
 
 % A further conjecture, not derived here: in a continuum limit this discrete geometric process may correspond to Brownian motion, with Onsager's regime as free diffusion, thrashing as reflection at a coordination barrier, and correlated demand as its fractional generalization. Three known diffusion regimes, if the correspondence holds, rather than three coincidences.
