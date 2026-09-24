@@ -3,17 +3,18 @@
 
 The core mechanics of persistence are identifiable across systems of any substrate. Mapping both the static architecture (the six pillars) and the operational dynamics (the dissipation trade-off and selection filter) translates domain-specific phenomena into identical mechanical constraints. The following mappings demonstrate architectural universality across distinct physical and informational domains. Detailed operationalizations belong to applied persistence mechanics; here, we illustrate the underlying structural invariants.
 
-% matter, evolution, anchor case
+% Reason: Common complex system, well resaerched, matter, evolution, anchor case
 % CDT: Aging/longevity
 \subsection{Biological Cell}
 Formalizing the biological concept of autopoiesis \cite{maturana_autopoiesis_1980}:
 \begin{description}[leftmargin=0pt]
     \item[Architecture] Capacity as metabolic hardware; Map as genome; Protocol as genetic code and signaling machinery; Governor as apoptosis and cell-cycle checkpoints; Toll as the thermodynamic cost of proofreading; Margin as ATP reserves and stress buffers.
     \item[Dynamics] The cell's basal metabolic rate ($\mathcal{D}$) is the product of its ATP cost per molecular reaction ($c$), proteome complexity ($K$), and metabolic turnover rate ($f$). An organism cannot simultaneously maximize genomic complexity and reproductive speed without exceeding the local thermodynamic ceiling. Trajectories that overdraw this budget undergo exponential suppression via starvation or competitive exclusion.
-    \item[Cross-Domain Transfer] Rather than treating aging as a correlational pattern of stochastic damage, this architectural perspective reframes senescence as the progressive degradation of operational pillars across nested sub-systems, revealing structural failure modes analogous to resource exhaustion in computational systems.
+    \item[Cross-Domain Transfer] Rather than treating aging as a correlational pattern of stochastic damage, this architectural defines senescence as the progressive degradation of operational pillars across nested sub-systems, revealing structural failure modes analogous to resource exhaustion in computational systems.
 \end{description}
 
-% mutli-agent systems, straight up 1:1 transfer of knowledge
+% Reason: mutli-agent systems, common researched with complex system research
+% CDT: straight up 1:1 transfer of knowledge
 \subsection{Ecological Network}
 Formalizing ecological ascendency and network thermodynamics \cite{ulanowicz_growth_1986}:
 \begin{description}[leftmargin=0pt]
@@ -28,7 +29,7 @@ Formalizing ecological ascendency and network thermodynamics \cite{ulanowicz_gro
 Formalizing a young domain still establishing its foundations:
 \begin{description}[leftmargin=0pt]
     \item[Architecture] Capacity as inference compute and GPU memory bandwidth; Map as parametric weights and attention matrices; Protocol as tokenization, layer connections, and key-value (KV) caching; Governor as output constraints and behavioral guardrails; Toll as autoregressive latency and state-update friction; Margin as unused context window, processing redundancy, and decision margin.
-    \item[Dynamics] The model's active dissipation burden ($\mathcal{D}$) is the product of compute friction per generated token ($c$), context and parameter footprint ($K$), and generation velocity ($f$). In autoregressive generation, attempts to maximize context length and reasoning depth without lowering parameter activation costs hit a hard memory bandwidth and compute ceiling. The Entropic Action acts as a strict evolutionary filter on AI architectures: models that fail to minimize this product succumb to cumulative attention noise (hallucination) or catastrophic inference costs, driving the structural selection of minimal-action survivors (e.g., KV-cache distillation, sparse routing, or linear-time state-space models).
+    \item[Dynamics] The model's active dissipation burden ($\mathcal{D}$) is the product of compute friction per generated token ($c$), context and parameter footprint ($K$), and generation velocity ($f$). In autoregressive generation, attempts to maximize context length and reasoning depth without lowering parameter activation costs hit a hard memory bandwidth and compute ceiling. The Operational Action acts as a strict evolutionary filter on AI architectures: models that fail to minimize this product succumb to cumulative attention noise (hallucination) or catastrophic inference costs, driving the structural selection of minimal-action survivors (e.g., KV-cache distillation, sparse routing, or linear-time state-space models).
     \item[Cross-Domain Transfer] The comparatively young field of AI can draw on cross-disciplinary knowledge without re-deriving it: long-context degradation is currently benchmarked and treated empirically. If the Saturation-Divergence Regime correctly describes KV-cache saturation, its onset is a hazard-rate problem already solved by Weibull analysis.
     \item[Contention Regimes] The three regimes of \cref{app:dynamic_budget} are visible in inference. Short-context generation resembles the Linear-Response Regime. As context length approaches the memory-bandwidth ceiling, generation quality collapses in a manner resembling the Saturation-Divergence Regime, the KV-cache saturation and attention degradation already documented in long-context models. Non-uniform, correlated attention patterns (repetition, recency bias) degrade worse than a memoryless baseline would predict, suggesting the Correlated-Demand Regime as a candidate lens, not a demonstrated one.
 \end{description}

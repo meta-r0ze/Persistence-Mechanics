@@ -1,13 +1,13 @@
 \section{Minimum Action as Survivorship}
 \label{sec:minimum_action}
-The Entropic Action defines what a system must minimize, but not which histories survive to be observed. We derive the selection filter from the multiplicative compounding of independent transition risk, and show that only minimal-action configurations remain observable.
+The Operational Action defines what a system must minimize, but not which histories survive to be observed. The selection filter derives from the multiplicative compounding of independent transition risk, and show that only minimal-action configurations remain observable.
 
 
 \subsection{The Exponential Filter}
 \label{subsec:exponential_filter}
 If persistence is maintained by state transitions, and each transition risks scrambling information into the substrate noise floor, then a history of $N$ transitions survives only if every step survives. Independent errors compound multiplicatively, yielding an exponential filter.
 
-Consider a structural history $\Gamma$ accumulating entropic action $S_\Phi[\Gamma]$ (\cref{eq:entropic_action}). Because the substrate possesses a finite noise floor, each elementary transition carries an intrinsic risk of information loss. Let $q$ be the probability that a single elementary transition maintains causal coherence.
+Consider a structural history $\Gamma$ accumulating operational action $S_\Phi[\Gamma]$ (\cref{eq:operational_action}). Because the substrate possesses a finite noise floor, each elementary transition carries an intrinsic risk of information loss. Let $q$ be the probability that a single elementary transition maintains causal coherence.
 
 In QSS, successive transitions are statistically independent dissipative events. The probability that $\Gamma$ maintains coherence is therefore multiplicative:
 
@@ -24,7 +24,7 @@ Using the identity $q^C = e^{C\ln q}$ with $C = S_\Phi[\Gamma]$, and defining $\
     P(\text{survival} \mid \Gamma) = e^{-\beta S_\Phi[\Gamma]}
 \end{equation}
 
-Here $\beta \equiv -\ln q$ is the substrate's inverse entropic tolerance, a geometric invariant of the channel. For discrete substrates, $q$ is determined by the channel geometry; in continuous media, $\beta$ emerges from the substrate's noise spectral density.
+Here $\beta \equiv -\ln q$ is the substrate's inverse operational tolerance, a geometric invariant of the channel. For discrete substrates, $q$ is determined by the channel geometry; in continuous media, $\beta$ emerges from the substrate's noise spectral density.
 
 This is the informational analogue of the Boltzmann distribution $P \propto e^{-E/k_BT}$, with $S_\Phi$ as energy and $\beta$ as inverse temperature. The Boltzmann form requires ensemble equilibrium and a thermal bath; the present form requires only independent transition risk along a single history and a substrate noise floor. The informational route recovers the same exponential law under strictly weaker assumptions: substrate geometry replaces thermodynamic equilibrium.
 
@@ -45,7 +45,7 @@ Because survival probability depends exponentially on $S_\Phi$, only histories a
 
 \begin{samepage}
 \begin{mdframed}[linewidth=1pt,linecolor=black,backgroundcolor=gray!10]
-    \noindent The \textbf{Selection Principle}: Among all configurations capable of encoding a given structural complexity, only those possessing the minimal possible \textbf{Entropic Action} ($S_\Phi$) remain observable.
+    \noindent The \textbf{Selection Principle}: Among all configurations capable of encoding a given structural complexity, only those possessing the minimal possible Operational Action ($S_\Phi$) asymptotically dominate the observable distribution.
 \end{mdframed}
 \end{samepage}
 
@@ -60,11 +60,11 @@ The severity of the exponential filter is a statement about the losers, not the 
 This eliminative mechanism is formalized as:
 
 \begin{proposition}[Minimum Action as Survivorship]
-In QSS, the observable trajectories of any persistent system are those achieving the minimal Entropic Action $S_\Phi$ among all candidate trajectories.
+In QSS, the observable trajectories of any persistent system are those achieving the minimal Operational Action $S_\Phi$ among all candidate trajectories.
 \end{proposition}
 
 \begin{proof}
-By \cref{eq:survival_prob}, the survival probability of any history $\Gamma$ is $P(\text{survival} \mid \Gamma) = e^{-\beta S_\Phi[\Gamma]}$. For any non-minimal trajectory $\Gamma_{\text{var}}$ with $\delta S_\Phi = S_\Phi[\Gamma_{\text{var}}] - S_\Phi[\Gamma_{\text{min}}] > 0$, \cref{eq:severity} gives $P(\Gamma_{\text{var}})/P(\Gamma_{\text{min}}) = e^{-\beta \delta S_\Phi}$. As $\delta S_\Phi$ accumulates over the observation window, this ratio vanishes. Therefore, only trajectories achieving the minimal Entropic Action retain non-negligible observation probability. The observable set is the argmin of $S_\Phi[\Gamma]$.
+By \cref{eq:survival_prob}, the survival probability of any history $\Gamma$ is $P(\text{survival} \mid \Gamma) = e^{-\beta S_\Phi[\Gamma]}$. For any non-minimal trajectory $\Gamma_{\text{var}}$ with $\delta S_\Phi = S_\Phi[\Gamma_{\text{var}}] - S_\Phi[\Gamma_{\text{min}}] > 0$, \cref{eq:severity} gives $P(\Gamma_{\text{var}})/P(\Gamma_{\text{min}}) = e^{-\beta \delta S_\Phi}$. As $\delta S_\Phi$ accumulates over the observation window, this ratio vanishes. Therefore, only trajectories achieving the minimal Operational Action retain non-negligible observation probability. The observable set is the argmin of $S_\Phi[\Gamma]$.
 \end{proof}
 
 Standard quantum mechanics grounds the Principle of Least Action in phase interference. The Selection Principle offers a distinct, classical mechanism (informational elimination) by which candidate physical histories are selected: the substrate itself acts as a filter, and what remains observable is only what has not yet dissipated.

@@ -1,73 +1,73 @@
 \section{The Architecture of Persistence}
 \label{sec:architecture_of_persistence}
-Any system that maintains structural coherence against entropic decay must solve three existential problems. The modes of engagement with these problems yield six irreducible pillars, which we derive, quantify, and prove minimally necessary and sufficient by logical exhaustive partitioning.
+Before a system can regulate, compute, or evolve, it must remain within the conditions that preserve its identity. We organize those conditions along three dimensions: bounded resources, retention of organization, and ordered evolution. Distinguishing the mechanisms that establish these conditions from those that protect them motivates six functional pillars. This section defines those pillars, examines the failure modes they address, and describes how familiar maintenance capabilities can be composed from them.
 
-\subsection{The Structural Requirements}
-\label{subsec:existential_problems}
-% To exist something must fulfill 3 requirements
+\subsection{The Structural Constraints}
+\label{subsec:existential_constraints}
+% To exist something must fulfill 3 constraints
 Any process persisting through time is bounded in extent, carries distinguishable content, and evolves through an ordered sequence of states. Absent any one, it is indistinguishable from its environment, from noise, or from something static. Formally, these correspond to: \textbf{Finiteness} (bounded resources against divergence), \textbf{Conservation} (preserved information against dissipation), and \textbf{Causality} (well-defined temporal evolution against ambiguity).
 
 % With the 3 we can say something exists, but need to survive too
-Existence, however, is transient. To persist, each requirement must
-survive its characteristic perturbation.
-
-% Total it all up into the pillars
-Each therefore demands \textbf{provision} (establishing the means to satisfy the requirement) and \textbf{defense} (protecting that means from the characteristic failure mode) yielding six irreducible pillars.
+Existence, however, is transient. To persist, each constraint must survive its characteristic perturbation. Each therefore demands \textbf{provision} (establishing the means to satisfy the constraint) and \textbf{defense} (protecting that means from the characteristic failure mode) yielding the six irreducible pillars.
 
 \begin{table}[h]
 \centering
 \setlength{\tabcolsep}{5pt}
 \renewcommand{\arraystretch}{1.5}
 \begin{tabular}{r|cc}
-\textbf{Requirement} & \textbf{Provision} & \textbf{Defense} \\ \hline
+\textbf{Constraint} & \textbf{Provision} & \textbf{Defense} \\ \hline
 \textbf{Finiteness}   & Capacity & Margin \\
 \textbf{Conservation} & Map      & Protocol \\
 \textbf{Causality}    & Toll     & Governor
 \end{tabular}
-\caption{By defining a persisting system as an entity possessing finite extent, conserved content, and causal sequence, and defining survival as the provisioning and defense of these properties, we establish a logically closed $3 \cdot 2$  taxonomy. This yields six necessary pillars.}
+\caption{The three constraints, organized by provision and defense, define the six pillars of the PM architecture.}
 \label{tab:pillars}
 \end{table}
 
-These pillars operate upon a medium that imposes immutable limits (bandwidth, latency, noise floor) known as the \textbf{Substrate}.
+A \emph{pillar} is a functionally distinct condition that must be materially or informationally instantiated for persistence. Pillars need not correspond one-to-one with components: a single mechanism may instantiate several pillars, and one pillar may be distributed across many mechanisms.
 
+These pillars operate upon a medium that imposes immutable limits (bandwidth, latency, noise floor) referred to as the \textbf{Substrate}.
 
 \subsection{The Six Pillars}
 \label{subsec:pillars}
 
-The previous section argued what must exist by logical exhaustion. This section shows that each pillar has a convergent theorem from six unrelated fields.
+The following provide concrete realizations of the six pillars showing that each pillar has a convergent theorem from six unrelated fields.
 
 \begin{enumerate}[label={}, leftmargin=0pt]
 % Finiteness
-    \item \textbf{Capacity ($CAP$):} \textit{The Vessel.} 
+    \item \textbf{Capacity ($CAP$):}
     The infrastructure required to acquire resources, process signals, and perform work. It defines the system's operational potential.
     \textit{Convergent Evidence (The Bekenstein Bound \cite{bekenstein_universal_1981}):} Bekenstein's bound limits the information content of any finite region, and the Margolus-Levitin limit\cite{margolus_maximum_1998} bounds the rate of state transitions; together they establish that finite capacity is a structural invariant.
 
-    \item \textbf{Margin ($MAR$):} \textit{The Buffer.}
-    The structural and energetic reserves held to absorb stochastic shocks. It defines the system's `Safe Operating Area,' providing the buffer required to survive environmental variance without terminal failure. (The gain and phase margin). 
+    \item \textbf{Margin ($MAR$):}
+    The structural and energetic reserves held to absorb stochastic shocks. It defines the system's `Safe Operating Area,' providing the buffer required to survive environmental variance without terminal failure. (The gain and phase margin).     
     \textit{Convergent Evidence (Nyquist-Bode Stability Margins\cite{nyquist_regeneration_1932} and Kingman's Formula\cite{kingman_single_1961}):} A system operating at theoretical criticality has zero tolerance for variance. Kingman's formula shows that as a queueing system's utilization approaches unity, waiting time diverges asymptotically, zero buffer against arrival variance means unbounded delay. Nyquist's stability margins are the linear-control manifestation of the same general requirement: persistent systems must maintain structural tolerance away from critical thresholds.
 
 % Conservation
-    \item \textbf{Map ($MAP$):} \textit{The Model.}
-    The internal logic, topological structure, or compressed representation of environmental regularities that distinguishes the system from the environment. It functions as a predictive engine that reduces uncertainty (informational surprise), allowing the system to steer towards coherent states. 
+    \item \textbf{Map ($MAP$):}
+    The retained organization, relational structure, or state criterion that distinguishes the system's viable configurations from its environment and from failed configurations. In adaptive systems, Map may be instantiated as an internal predictive model; in passive systems, it may be embodied directly in physical organization.
     \textit{Convergent Evidence (The Good-Regulator Theorem \cite{conant_every_1970}):} Conant and Ashby's Good-Regulator theorem establishes that persistent regulation requires an internal model; without Map, the system--environment boundary dissolves.
 
-    \item \textbf{Protocol ($PRO$):} \textit{The Interface.}
-    The communicative glue regulating information flow between the Capacity and the Map. It ensures internal coherence, standardizes interfaces, and minimizes signal decay across the system's internal boundaries. 
-    \textit{Convergent Evidence (Shannon's Source-Channel Separation and Channel Capacity \cite{shannon_communication_1949}):} Shannon's source--channel separation theorem shows that coherence across internal boundaries requires an independent interface layer; Protocol is that layer.
+    \item \textbf{Protocol ($PRO$):}
+    The communicative glue regulating information flow between pillars. It ensures internal coherence, standardizes interfaces, and minimizes signal decay across the system's internal boundaries. 
+    \textit{Convergent Evidence (Shannon's Source-Channel Separation and Channel Capacity \cite{shannon_communication_1949}):} Shannon's coding results characterize conditions for reliable communication, providing a realization of the Protocol role without requiring a physically separate interface layer.
 
 % Causality
-    \item \textbf{Toll ($TOL$):} \textit{The Temporal Cost.} State transitions carry an irreducible information and temporal cost. Any irreversible logical operation, such as erasing a bit of structural information, necessitates a strictly compensatory increase in environmental Shannon entropy (the $k_BT \ln 2$ bound). \textit{Convergent Evidence (Landauer's Principle and Margolus-Levitin Limit \cite{landauer_irreversibility_1961,margolus_maximum_1998}):} These bounds make Toll a structural requirement.
-    
-    \item \textbf{Governor ($GOV$):} \textit{The Constraint.}
-    The non-linear constraint mechanism that prevents unbounded divergence or `runaway' loops. It enforces operational boundaries (e.g., apoptosis, budget limits) to protect the substrate from exhaustion. 
+    \item \textbf{Toll ($TOL$):}
+    The finite temporal and resource requirements through which state transitions are physically or computationally realized. Toll need not be dissipative in every implementation; it records that ordered change must occur through a substrate with finite transition capabilities.
+    \textit{Convergent Evidence (Landauer's Principle and Margolus-Levitin Limit \cite{landauer_irreversibility_1961,margolus_maximum_1998}):} On thermal substrates, irreversible operations (such as information erasure) carry a strict lower bound of $k_B T \ln 2$ (Landauer's Principle), but even broadly, execution latency (Margolus-Levitin) makes Toll a structural requirement. 
+
+    \item \textbf{Governor ($GOV$):}
+    The active or passive constraint structure that keeps evolution within the system's viable region by suppressing, redirecting, or terminating destabilizing transitions.
     \textit{Convergent Evidence (Ashby's Law of Requisite Variety \cite{ashby_introduction_1956}):} Ashby's Law of Requisite Variety requires that the constraint mechanism match the variety of perturbations; without Governor, runaway is unavoidable.
 \end{enumerate}
 
-With each pillar independently attested, the architecture becomes grounded with citable bounds and can be built on formally. 
+With each pillar independently attested, the architecture becomes grounded with citable bounds and can be built on formally.
 
 \subsection{Necessity: Counterfactual Failure Modes}
 \label{subsec:pillars_necessity}
-The necessity of the set $\mathbb{P}$ $=$ $\{\mathrm{CAP},$ $\mathrm{MAP},$ $\mathrm{PRO},$ $\mathrm{GOV},$ $\mathrm{TOL},$ $\mathrm{MAR}\}$ follows by analyzing the \textbf{Counterfactual Failure Mode} of a system lacking exactly one pillar ($\mathbb{P}' = \mathbb{P} \setminus \{x\}$). In every case, the expected lifetime of the system $\tau$ tends to zero.
+The necessity of the six pillars follows by analyzing the \textbf{Counterfactual Failure Mode} of a system lacking exactly one pillar. In every case, the system's viability collapses, limiting its expected lifetime $\tau$ to the onset of its characteristic perturbation.
+
 \begin{itemize}
     \item \textbf{No Capacity (Starvation):} Without baseline operational infrastructure, the system cannot acquire, process, or export resources. Once existing reserves are spent, any perturbation is fatal; $\tau \to 0$ via rapid exhaustion.
 
@@ -85,50 +85,48 @@ The necessity of the set $\mathbb{P}$ $=$ $\{\mathrm{CAP},$ $\mathrm{MAP},$ $\ma
 Since the removal of any component results in $\tau \to 0$, every pillar is necessary.
 
 
-\subsection{Sufficiency: Compositional Closure}
+\subsection{Completeness: Compositional Closure}
 \label{subsec:pillars_sufficiency}
-Proving sufficiency over an unbounded architectural space would require ruling out every possible construction, which no finite argument can do. What we can show instead is that every capability traditionally treated as an independent requirement decomposes into the six pillars, with no counterexample identified to date. Memory is Map content provisioned against temporal variance by Margin. Prediction is Map operation on incoming signal via Protocol. Repair is Governor-triggered re-provisioning within the Margin reserve. Replication is Protocol-mediated write of Map onto fresh Capacity. Advanced topologies such as feedforward networks, state observers, and adaptive controllers extend the six-pillar structure the same way: none introduces a new primitive, each is a composition within the existing six. No counterexample or seventh independent primitive has been identified.
+Proving sufficiency over an unbounded architectural space would require ruling out every possible construction, which no finite argument can do. Instead, every capability plausibly treated as an independent requirement has been found to decompose into the six pillars, with no counterexample identified to date.
+
+Memory is Map content provisioned against temporal variance by Margin. Prediction is Map operation on incoming signal via Protocol. Repair is Governor-triggered re-provisioning within the Margin reserve. Replication is Protocol-mediated write of Map onto fresh Capacity. Advanced topologies such as feedforward networks, state observers, and adaptive controllers extend the six-pillar structure the same way: none introduces a new primitive, each is a composition within the existing six.
 
 \subsection{The Cost of Persistence}
 \label{subsec:cost_of_persistence}
-The six pillars describe what must be in place for a system to persist, but maintaining that architecture consumes resources: a persistent system is a resistor against entropic erosion, paying continuously just to remain distinguishable from its environment. To compare systems or define what minimizing means, we need that total structural cost as a single scalar.
+A system pays continuously merely to remain distinguishable from its environment. The six pillars consume resources, acting as a continuous resistor against entropic erosion. This total structural cost provides the scalar metric required to compare systems.
 
-Every pillar imposes a strictly positive cost: a system cannot maintain boundaries, store internal models, or execute state updates for free. Within this strictly positive budget, the pillars partition into two operational roles:
+Every pillar imposes a strictly positive cost, partitioning into two operational roles:
 
 \begin{itemize}
-    \item \textbf{Direct Structural Costs:} The irreducible physical overhead of maintaining the system's baseline existence. Maintaining the vessel ($Z_{\mathrm{CAP}}$, $Z_{\mathrm{MAR}}$), the internal model ($Z_{\mathrm{MAP}}$), and executing state updates ($Z_{\mathrm{TOL}}$) requires a strict allocation of resources regardless of how the system is organized.
-    
-    \item \textbf{Coordination Costs:} Protocol and Governor incur direct structural costs to operate, but they function as active constraints rather than passive structures. Their operational effect is to suppress uncoordinated variance.
+    \item \textbf{Direct Structural Costs:} The overhead of maintaining the system's baseline existence. Maintaining the vessel ($Z_{\mathrm{CAP}}$, $Z_{\mathrm{MAR}}$), the internal model ($Z_{\mathrm{MAP}}$), and executing state updates ($Z_{\mathrm{TOL}}$) requires a strict allocation of resources regardless of how the system is organized.
+
+    \item \textbf{Coordination Costs:} Protocol ($Z_{\mathrm{PRO}}$) and Governor ($Z_{\mathrm{GOV}}$) incur direct structural costs to operate, but function as active constraints rather than passive structures. Their operational effect is to suppress uncoordinated variance. As in control theory, the active controller consumes continuous energy to operate, but its regulation ensures the closed loop's total dissipation remains strictly lower than the open-loop alternative.
 \end{itemize}
 
-The system pays a continuous \emph{coordination cost} (maintaining Protocol and Governor) as an insurance premium to avoid a catastrophic entropic penalty (fragmentation or runaway divergence). In control theory, this is analogous to negative feedback: the active controller consumes continuous energy to operate, but its regulation ensures the closed loop's total dissipation is lower than the open-loop alternative.
-
-To quantify this baseline structural cost without conflating it with environmental work, we isolate the system at its zero-flux limit. In Quiescent Steady State (QSS), no net energy or information enters or leaves. The six pillars operate on functionally orthogonal domains, so their contributions do not interfere. The Net Entropic Impedance is therefore a strictly additive budget across these independent channels:
+To quantify baseline structural costs independently of environmental work, the system is evaluated at its zero task-flux limit. This defines the \emph{Quiescent Steady State} (QSS), a homeostatic ground state where internal housekeeping dissipation balances entropic decay. In this baseline, the six pillars operate along functionally uncoupled, orthogonal channels:
 
 \begin{equation}
 \label{eq:entropic_balance}
     \bar{Z}_{\mathrm{net}} = Z_{\mathrm{CAP}} + Z_{\mathrm{MAP}} + Z_{\mathrm{TOL}} + Z_{\mathrm{MAR}} + Z_{\mathrm{PRO}} + Z_{\mathrm{GOV}}
 \end{equation}
 
-Because the pillars occupy orthogonal domains at zero flux, any correlation between them is already priced into the individual coordination terms $Z_{\mathrm{PRO}}$ and $Z_{\mathrm{GOV}}$; no additional cross-term is needed to capture coupling between pillars within this baseline. Coupling outside QSS introduces non-linear contention, which we formalize in \cref{sec:open_systems}.
+Because the pillars occupy orthogonal domains at zero flux, any correlation between them is already priced into the individual coordination terms $Z_{\mathrm{PRO}}$ and $Z_{\mathrm{GOV}}$; no additional cross-term is needed to capture coupling between pillars within this baseline. Coupling outside QSS introduces non-linear contention, which we formalize in \cref{sec:open_systems} on open systems.
 
 
 % Answering the readers question of .... "isn't this just [information theory, thermodynamics, control theory] rebranded?"
 \subsection{Relation to Existing Disciplines}
 \label{subsec:relations}
-Previous disciplines have encountered pieces of the six-pillar architecture already. In each case the components were taken as given, not recognized as instances of one invariant beyond the discipline's own domain. The universal architecture frames these components as convergent evidence for a single structural requirement: each domain encountered the same architecture from its own direction, and the present mechanics makes that convergence explicit.
+Existing fields studying systems that persist have encountered the six-pillar architecture already as they each are functional instantiations. In each case, the discipline addressed operational problems that sit downstream of these six pillars, taking the essential architecture as given.
 
 \subsubsection{Relation to Information Theory}
-Channel optimization repeatedly encounters parameters corresponding to the six pillars: channel capacity (Capacity), codebook topology (Map), handshaking and framing (Protocol), power constraints (Governor), processing overhead (Toll), and link margins (Margin). Classical information theory treats these six as externally specified boundary conditions and optimizes throughput conditioned on them, without asking why a physical system must instantiate all six simply to persist against entropic erasure.
+\label{subsec:information_theory}
+Information theory quantifies how representation, encoding, and noise constrain communication across physical mediums. In doing so, it relies on structural primitives that map directly to the six pillars: channel capacity (Capacity), codebook topologies (Map), framing and handshaking routines (Protocol), power constraints (Governor), processing overhead (Toll), and link margins (Margin). Information theory focuses on maximizing mutual information or minimizing error rates given a fixed architecture. Persistence Mechanics instead derives the architecture required for any state representation to survive noise and resist structural erasure.
 
 % Describe how thermodynamics and PM are different
 \subsubsection{Relation to Thermodynamics}
 \label{subsec:thermodynamics}
-Thermodynamics assumes an external thermal bath and continuous ensemble variables from the outset; it defines temperature and equilibrium against that bath without asking what structure must exist prior to
-it. Algorithmic information theory supplies the missing formal substrate. Shannon entropy and Gibbs entropy are formally identical in the statistical-mechanical limit, while Landauer's principle and the
-Margolus-Levitin bound supply the physical scale of individual state transitions: information loss corresponds to entropic dissipation, channel capacity to thermodynamic availability, and information flux to energy flux.
+Thermodynamics describes how physical systems evolve under energy exchange and thermal fluctuations. It relies on physical primitives that correspond to the six pillars: extensive state variables and phase space volume (Capacity), metastable energy landscapes (Map), kinetic transition pathways (Protocol), conservation laws (Governor), irreversible entropy production (Toll), and free-energy activation barriers (Margin). Classical thermodynamics assumes the pillars, an external heat bath and continuous state variables, as given boundary conditions. Where thermodynamics describes how heat flows, persistence mechanics specifies what structural architecture must exist before heat, flow, or temperature can be meaningfully defined.
 
-The difference is one of scope and substrate. The zero-flux architecture requires neither bath nor temperature. It is defined at zero flux on a discrete information substrate, and thermodynamic phenomenology emerges as the continuum limit of accumulated discrete transitions. Where thermodynamics describes how heat flows, this underlying architecture describes what structure must exist before heat or flow can be meaningfully defined.
 
 % Describe how CT and PM are different
 % Acknowledge the 4 components as convergent evidence;
@@ -137,8 +135,4 @@ The difference is one of scope and substrate. The zero-flux architecture require
 \subsubsection{Relation to Control Theory} 
 \label{subsec:control_theory}
 Classical control theory emerged from engineering physical servomechanisms: radar mounts, autopilots, and chemical plants whose historical context was optimizing systems already built, powered, and
-staffed. Its four given components (the plant, the sensor, the controller, and the actuator) are convergent evidence for four of the six pillars: Plant/Actuator $\rightarrow$ Capacity, Reference Signal/Setpoint $\rightarrow$ Map, Sensor/Feedback Path $\rightarrow$ Protocol, Controller/Limiter $\rightarrow$ Governor.
-
-The remaining two pillars are rarely canonized alongside the first four as they are not physical components, but describe how the four components behave under time and stress. Time delays, bandwidth limits, and processing latency ($\rightarrow$ Toll) were minimized as engineering overhead and gain/phase margins ($\rightarrow$ Margin) were tuned for stability.
-
-Control theory asks how to regulate an existing system; the present mechanics derives the architecture that any existing system must instantiate. The classical four-component loop is not a rival account but one physical instantiation of the six-pillar invariant.
+staffed. Its four given components (the plant, the sensor, the controller, and the actuator) are convergent evidence for four of the six pillars: Plant/Actuator (Capacity), Reference Signal/Setpoint (Map), Sensor/Feedback Path (Protocol), Controller/Limiter (Governor). The remaining two pillars are rarely canonized alongside the first four as they are not physical components, but describe how the four components behave under time and stress. Time delays, bandwidth limits, and processing latency (Toll) were minimized as engineering overhead and gain/phase margins (Margin) were tuned for stability. Control theory asks how to regulate an existing system and the classical four-component loop is a physical instantiation of the six-pillar invariant.
