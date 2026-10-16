@@ -1,11 +1,9 @@
 \section{The Dynamics of Persistence}
 \label{sec:dynamics_of_persistence}
-
-To describe how a system maintains its architecture through time, we first identify the operational requirements of its state transitions: the work performed per update, the cost of that work, and the frequency of updates. These three quantities define a local operational cost rate. We then examine the constraints imposed by a finite resource budget to measure the cumulative cost of a history.
+To describe how a system maintains its architecture through time, we identify the minimal accounting of its state transitions: the work performed per update, the cost of that work, and the frequency of updates. These quantities define a local operational cost rate density. The finite operational budget presented in most persistent systems results in a trade-off between the three with unexpected implications.
 
 \subsection{State Transition Costs}
 \label{subsec:state_transition_costs}
-
 The operation of the six pillars through time introduces the constraint that transitions must be realized within the substrate's available resources and response times. Quantifying this requires distinguishing the work an update requires, the cost of that work, and the update frequency.
 
 \begin{enumerate}
@@ -52,65 +50,32 @@ corresponding operational resource cost.
 When any operational cost is 0, $\mathcal{D}=0$. Whether the corresponding inactivity or absence of expenditure compromises persistence depends on the maintenance required over the observation interval.
 
 
-
-
-
 \subsection{The Complexity Trade-off}
 \label{subsec:complexity_tradeoff}
 
-Transitions draws on a resource budget whose sustainable rate and ceiling $\mathcal{D}_{\max}$ is set by the substrate. This results in a competition among the three factors.
+Transitions draw on a resource budget whose sustainable rate $\mathcal{D}_{\max}$ is set by the substrate and environment. This budget constrains the combinations of workload, toll, and transition flux that the system can sustain and results in a competition among the three factors.
 
-Transitions draw on a resource budget whose sustainable rate $\mathcal{D}_{\max}$ is set by the substrate and environment. This budget constrains the combinations of workload, toll, and transition flux that the system can sustain.
+Any persistent architecture is constrained to the feasible operating surface $cKf \le D_{max}$. At a fixed budget, increasing workload requires a compensating reduction in toll, transition flux, or both.
 
-\begin{proposition}[The Complexity Trade-off]
-For homogeneous operation activity in a fixed substrate region, operation within the sustainable budget requires
-\begin{equation}
-\label{eq:complexity_tradeoff}
-    cKf \leq \mathcal{D}_{\max}.
-\end{equation}
-For $c,K>0$, the corresponding transition-flux bound is
-\begin{equation}
-\label{eq:update_flux_bound}
-    f \leq \frac{\mathcal{D}_{\max}}{cK}.
-\end{equation}
-At a fixed, binding budget, increasing workload requires a compensating reduction in toll, transition flux, or both.
-\end{proposition}
-
-\begin{proof}
-Substitute $\mathcal{D}=cKf$ into the budget constraint and divide by $cK>0$.
-\end{proof}
-
+% Provide an intuative example of trading one for another
 For illustration, consider a cell with a fixed ATP budget. If each update requires twice as many ATP-consuming operations while the ATP cost per operation remains unchanged, the same budget supports only half as many updates per unit time. Maintaining the original update rate would require either a lower cost per operation or a larger budget.
 
+% This feels intuative, but it is not
+Because this applies to all persistent systems various properties that might be unintuitive can be assumed. When budgets are fixed knowing two of the values in a system will let one accurately predict the third and when one value changes one or both of the other values are guaranteed to change. Conversely if the budget changes; one, two or all three values will change.
 
+% Time within systems is relative because of this
+\subsection{Operational Clocks}
+\label{subsec:operational_clocks}
+State transitions provide an operational basis for counting time when successive updates serve as clock ticks. 
 
-\subsection{Operational Action}
-\label{subsec:operational_action}
+% min/max
+\paragraph{Budget}
+Because each tick requires resources the operational budget bounds the maximum tick rate.  Conversely any system that persists against external disturbance might have a low tick rate, but never zero.
 
-While the operational cost rate describes instantaneous expenditure, evaluating the accumulated burden of distinct histories requires integrating this rate across the system's spatial extent and temporal duration.
+% comparing systems
+\paragraph{Relative Clocks}
+Relative to a common external time reference, systems with different clock rates accumulate different tick counts over the same interval.
 
-Let $\Sigma(t)$ denote the physical or computational elements defining the system boundary at time $t$. Integrating the local cost-rate density over this footprint yields the total instantaneous operational cost:
-\begin{equation}
-\label{eq:impedance_density}
-    Z_{\mathrm{net}}(t)
-    = \int_{\Sigma(t)} \mathcal{D}(x,t)\,d\mu(x).
-\end{equation}
-Here, $\mu$ specifies the substrate measure used to define $\mathcal{D}$. For discrete elements, the counting measure reduces this integral to a sum over the localized elements.
-
-The architectural pillars need not occupy physically disjoint regions of the substrate. Because the six pillars represent distinct functional requirements, their total expenditure partitions exactly into their additive costs (\cref{subsec:cost_of_persistence}), yielding $Z_{\mathrm{net}}(t)=\sum_i Z_i(t)$. This strict accounting ensures that even if a single physical mechanism multiplexes multiple pillars, its operational cost is uniquely apportioned without double-counting.
-
-The \emph{Operational Action} $S_{\Phi}$ of a structural history $\Gamma$ over an observation interval $[0,T]$ is defined as its cumulative operational cost:
-\begin{equation}
-\begin{split}
-\label{eq:operational_action}
-    S_{\Phi}[\Gamma;T]
-    &= \int_0^T Z_{\mathrm{net}}(t;\Gamma)\,dt \\
-    &= \int_0^T\int_{\Sigma(t)} 
-      \mathcal{D}(x,t;\Gamma)\,d\mu(x)\,dt.
-\end{split}
-\end{equation}
-Comparing competing systems requires evaluating this action over a common observation interval, a shared resource unit, and a consistent convention for identifying the system boundary.
-
-The dimensions of $S_{\Phi}$ inherit the units of the operational toll $c$. If $c$ represents dissipated energy per operation, $S_{\Phi}$ quantifies macroscopic dissipated energy. If $c$ is defined as a dimensionless action per operation, $S_{\Phi}$ becomes a pure, dimensionless count of state transitions. In arbitrary physical systems, a dimensionless Operational Action can always be recovered by dividing $S_{\Phi}$ by a characteristic reference cost.
-
-While the static architecture identifies the functions instantiated by the system, the Operational Action records the exact thermodynamic burden of their realized operation. This cost accumulates along any history, whether or not the system ultimately persists. Relating this accumulated Operational Action to the probability of survival requires a specific failure model, formalized in \cref{sec:minimum_action}.
+% Persistence
+\paragraph{Necessary responses}
+When persistence requires a response to an external threat within a deadline, the required updates impose a minimum resource allocation that must be dedicated to f to respond in time. If the clock and the operations it measures slow proportionally, their internal timing relationships remain unchanged, even as the update rate potentially falls below that required to meet the deadline without detection through internal comparisons.
