@@ -92,8 +92,7 @@ theorem relative_limit (S : X → ℝ) (g : X) (hmin : ∀ i, S g ≤ S i) (i : 
     Tendsto (fun β : ℝ => weight β (S i - S g)) atTop
       (𝓝 (if S i = S g then 1 else 0)) := by
   by_cases hi : S i = S g
-  · simpa [hi, weight] using (tendsto_const_nhds :
-      Tendsto (fun _ : ℝ => (1 : ℝ)) atTop (𝓝 1))
+  · simp [hi, weight]
   · simpa [hi] using penalty_vanishes (lt_of_le_of_ne (hmin i) (Ne.symm hi) |> sub_pos.mpr)
 
 omit [DecidableEq X] in
