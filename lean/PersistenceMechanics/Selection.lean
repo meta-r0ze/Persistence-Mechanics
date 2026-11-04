@@ -27,7 +27,7 @@ they enter here as the form of `survivor`.
 
 open Real Filter Topology Finset
 
-namespace PMFramework.Selection
+namespace PersistenceMechanics.Selection
 
 variable {ι : Type*} [Fintype ι]
 
@@ -156,4 +156,4 @@ theorem selection_timescale [Nonempty ι] {p : ι → ℝ} (hp : ∀ i, 0 < p i)
     linear_combination (-1) * hτ
   rw [this, exp_add]; ring
 
-end PMFramework.Selection
+end PersistenceMechanics.Selection

@@ -1,4 +1,4 @@
-import PMFramework.Selection
+import PersistenceMechanics.Selection
 import Mathlib.Analysis.SpecialFunctions.ExpDeriv
 import Mathlib.Tactic
 
@@ -21,7 +21,7 @@ The exponential law is the modelling input of §4.1; its consequences are proved
 -/
 
 noncomputable section
-namespace PMFramework.Gibbs
+namespace PersistenceMechanics.Gibbs
 open Finset Filter
 open scoped Topology
 
@@ -129,4 +129,4 @@ theorem probability_limit (S : X → ℝ) (g : X) (hmin : ∀ i, S g ≤ S i) (i
 
 end Concentration
 
-end PMFramework.Gibbs
+end PersistenceMechanics.Gibbs

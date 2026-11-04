@@ -1,4 +1,4 @@
-import PMFramework.ExponentialFilter
+import PersistenceMechanics.ExponentialFilter
 import Mathlib.Algebra.Order.Floor.Semiring
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
 
@@ -29,7 +29,7 @@ The remaining inputs are the three premises, not a chosen functional form.
 
 open Real
 
-namespace PMFramework.HazardForm
+namespace PersistenceMechanics.HazardForm
 
 /-- **Discrete cost.** A multiplicative positive survival function of transition counts is
 geometric: each transition is survived with the same probability `F 1`. -/
@@ -139,4 +139,4 @@ theorem hazard_proportional (F : ℝ → ℝ) (hpos : ∀ s, 0 ≤ s → 0 < F s
   refine ⟨β, hβ, fun Z T hS => ?_⟩
   rw [hF _ hS, ExponentialFilter.cost_proportional]
 
-end PMFramework.HazardForm
+end PersistenceMechanics.HazardForm

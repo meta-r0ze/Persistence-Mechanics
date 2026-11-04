@@ -17,7 +17,7 @@ import Mathlib.Analysis.SpecialFunctions.ExpDeriv
 
 open Real intervalIntegral
 
-namespace PMFramework.ExponentialFilter
+namespace PersistenceMechanics.ExponentialFilter
 
 /-- Survival to time `T` under a hazard `h`. -/
 noncomputable def survival (h : ℝ → ℝ) (T : ℝ) : ℝ := exp (-∫ t in (0)..T, h t)
@@ -57,4 +57,4 @@ theorem discrete_survival {q c₀ : ℝ} (hq : 0 < q) (hc : 0 < c₀) (N : ℕ) 
   have : -((-log q / c₀) * (N * c₀)) = N * log q := by field_simp
   rw [this, ← log_pow, exp_log (pow_pos hq N)]
 
-end PMFramework.ExponentialFilter
+end PersistenceMechanics.ExponentialFilter

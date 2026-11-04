@@ -1,4 +1,4 @@
-import PMFramework.Selection
+import PersistenceMechanics.Selection
 import Mathlib.Analysis.SpecialFunctions.Log.Basic
 
 /-!
@@ -27,7 +27,7 @@ defect's reference moves.
 
 open Real Finset Filter Topology
 
-namespace PMFramework.LawSelection
+namespace PersistenceMechanics.LawSelection
 
 variable {Ω : Type*} [Fintype Ω] [Nonempty Ω]
 
@@ -177,4 +177,4 @@ theorem selected_uniform_worst {ι : Type*} [Fintype ι] [Nonempty ι] (L : ι �
   exact law_selection L hL worstRate (fun p hp => hu' ▸ worstRate_ge hp)
     (fun p hp => by rw [hu']; exact worstRate_eq_iff hp) hu hw hβ S hS
 
-end PMFramework.LawSelection
+end PersistenceMechanics.LawSelection
